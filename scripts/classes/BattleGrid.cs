@@ -3,25 +3,19 @@ using Godot.Collections;
 using System;
 using System.Linq;
 
-
-
-public partial class BattleGrid : Control
+public partial class BattleGrid : Node3D
 {
-	const string basicTexturePath = "res://resources/images/backgroundNoiseTexture.res";
-	float blockSize;
-	bool mouseOnGrid;
-	TextureRect hoverOutline;
-	Resource basicTexture = GD.Load(basicTexturePath);
+	float blockSize = 2.0f; // world-space size per block; tweak as needed
 	public GridBlock currentHovered;
 	public Vector2I gridSize;
 	public Array<GridBlock> blocks = new Array<GridBlock>();
-	Control gridContainer = new Control();
+	Node3D gridContainer = new Node3D();
 
 	private Array<SerializableBlock> serializableBlocks = null;
 
 	public BattleGrid(int x, int y)
 	{
-		gridSize = new Vector2I(x,y);
+		gridSize = new Vector2I(x, y);
 	}
 
 	public BattleGrid(int x, int y, SerializableGrid sGrid)
@@ -29,57 +23,28 @@ public partial class BattleGrid : Control
 		gridSize = new Vector2I(x, y);
 		serializableBlocks = sGrid.grid;
 	}
+
 	public override void _Ready()
 	{
-		this.SetAnchorsPreset(LayoutPreset.FullRect);
-		this.SetOffsetsPreset(LayoutPreset.FullRect);
 		initializeGrid();
 	}
 
 	public void initializeGrid()
 	{
-		setupGridContainer(calculateGridPixelSize());
+		setupGridContainer();
 
 		if (serializableBlocks == null) setupBlocks();
 		else setupBlocks(serializableBlocks);
-		
-		setupHover("res://resources/Images/battleGridHoverOutline.png");
 	}
 
-	Vector2 calculateGridPixelSize()
+	void setupGridContainer()
 	{
-		Vector2 available_size = new Vector2(
-			this.Size.X * 0.8f,
-			this.Size.Y * 0.8f
+		// Center the grid on the origin so the camera rig can orbit around (0,0,0)
+		gridContainer.Position = new Vector3(
+			-(gridSize.X * blockSize) / 2f,
+			0,
+			-(gridSize.Y * blockSize) / 2f
 			);
-
-		if (available_size.X <= 0 || available_size.Y <= 0)
-		{
-			available_size = new Vector2(600, 400);
-		}
-
-		float maxXSize = available_size.X / gridSize.X;
-		float maxYSize = available_size.Y / gridSize.Y;
-
-		blockSize = Math.Min(maxXSize, maxYSize);
-
-		return new Vector2(
-			gridSize.X * blockSize,
-			gridSize.Y * blockSize
-			);
-
-	}
-
-	void setupGridContainer(Vector2 gridPixelSize)
-	{
-		gridContainer.Position = new Vector2(
-			(Size.X - gridPixelSize.X) / 2f,
-			(Size.Y - gridPixelSize.Y) / 2f
-			);
-		gridContainer.MouseExited += () =>
-		{
-			if (!gridContainer.GetGlobalRect().HasPoint(GetGlobalMousePosition())) hoverOutline.Visible = false;
-		};
 		AddChild(gridContainer);
 	}
 
@@ -96,19 +61,16 @@ public partial class BattleGrid : Control
 					);
 
 				blocks.Add(block);
-				
-				block.Position = new Vector2(
+
+				block.Position = new Vector3(
 					blockSize * x,
-					blockSize * (gridSize.Y - y - 1)
+					0,
+					blockSize * y
 					);
-				block.MouseEntered += () =>
-				{
-					onBlockHovered(block);
-				};
-				block.MouseExited += () => 
-				{
-					onBlockUnhovered(block);
-				};
+
+				block.MouseEntered += () => onBlockHovered(block);
+				block.MouseExited += () => onBlockUnhovered(block);
+
 				gridContainer.AddChild(block);
 			}
 		}
@@ -121,52 +83,36 @@ public partial class BattleGrid : Control
 			for (int y = 0; y < gridSize.Y; y++)
 			{
 				GridBlock block = new GridBlock(
-					serializableBlocks.ElementAt(x * gridSize.X + y ).type,
+					serializableBlocks.ElementAt(x * gridSize.X + y).type,
 					new Vector2I(x, y),
 					blockSize
 					);
 
 				blocks.Add(block);
 
-				block.Position = new Vector2(
+				block.Position = new Vector3(
 					blockSize * x,
-					blockSize * (gridSize.Y - y - 1)
+					0,
+					blockSize * y
 					);
-				block.MouseEntered += () =>
-				{
-					onBlockHovered(block);
-				};
-				block.MouseExited += () =>
-				{
-					onBlockUnhovered(block);
-				};
+
+				block.MouseEntered += () => onBlockHovered(block);
+				block.MouseExited += () => onBlockUnhovered(block);
+
 				gridContainer.AddChild(block);
 			}
 		}
 	}
 
-	void setupHover(String outlinePath)
-	{
-		hoverOutline = new TextureRect();
-		hoverOutline.MouseFilter = MouseFilterEnum.Ignore;
-		hoverOutline.Size = new Vector2(
-			blockSize,
-			blockSize
-			);
-		hoverOutline.StretchMode = TextureRect.StretchModeEnum.Scale;
-		hoverOutline.Texture = (Texture2D)GD.Load(outlinePath);
-		hoverOutline.Visible = false;
-		this.AddChild(hoverOutline);
-	}
-
 	public void onBlockHovered(GridBlock block)
 	{
 		currentHovered = block;
-		hoverOutline.Visible = true;
-		hoverOutline.GlobalPosition = block.GlobalPosition;
+		block.setHovered(true);
 	}
+
 	public void onBlockUnhovered(GridBlock block)
 	{
-		currentHovered = null;
+		if (currentHovered == block) currentHovered = null;
+		block.setHovered(false);
 	}
 }

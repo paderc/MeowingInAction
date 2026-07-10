@@ -11,6 +11,7 @@ config_version=5
 [application]
 
 config/name="Miau2"
+run/main_scene="uid://c35c4pfq45ko"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 
 [display]

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://dn34gf0ecwc16"]
 
-[ext_resource type="Texture2D" uid="uid://pncw4jv6hvgy" path="res://resources/Images/buttonBG/normalButton.res" id="1_6u4wf"]
+[ext_resource type="Texture2D" uid="uid://pncw4jv6hvgy" path="res://resources/images/buttonBG/normalButton.res" id="1_6u4wf"]
 [ext_resource type="Script" uid="uid://doqv63m1te4lj" path="res://testing/Test.cs" id="2_6u4wf"]
 
 [node name="TextureRect" type="TextureRect" unique_id=916547470]

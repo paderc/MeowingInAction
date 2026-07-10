@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://8xjkjrwwhvjk" path="res://scenes/Buttons/PlayButton.tscn" id="2_4ytvr"]
 [ext_resource type="PackedScene" uid="uid://bl5vlimjg7o4c" path="res://scenes/Buttons/MeowButton.tscn" id="3_g3eks"]
-[ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/Images/kotPrawyDol.png" id="3_xfeue"]
+[ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/images/kotPrawyDol.png" id="3_xfeue"]
 [ext_resource type="PackedScene" uid="uid://cc3v5r0j1ro36" path="res://scenes/Buttons/SettingsButton.tscn" id="4_v86rl"]
 [ext_resource type="PackedScene" uid="uid://djelum4h56m00" path="res://scenes/Buttons/ExitButton.tscn" id="5_13sgg"]
 

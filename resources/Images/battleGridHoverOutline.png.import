@@ -3,15 +3,15 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://blree5p0sc3ct"
-path="res://.godot/imported/battleGridHoverOutline.png-311e2453fa7668d67e560a1ec8675a93.ctex"
+path="res://.godot/imported/battleGridHoverOutline.png-99970a5de417f132d29c7ee9cd40ba13.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/Images/battleGridHoverOutline.png"
-dest_files=["res://.godot/imported/battleGridHoverOutline.png-311e2453fa7668d67e560a1ec8675a93.ctex"]
+source_file="res://resources/images/battleGridHoverOutline.png"
+dest_files=["res://.godot/imported/battleGridHoverOutline.png-99970a5de417f132d29c7ee9cd40ba13.ctex"]
 
 [params]
 

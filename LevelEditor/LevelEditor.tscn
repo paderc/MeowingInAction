@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c35c4pfq45ko"]
 
 [ext_resource type="Script" uid="uid://ci6qc4n36eiea" path="res://LevelEditor/Scripts/LevelEditor.cs" id="1_onmh3"]
+[ext_resource type="Script" uid="uid://ccrgohaqd35wu" path="res://scripts/classes/OrbitCameraRig.cs" id="2_hdgag"]
 
 [node name="LevelEditor" type="Control" unique_id=364268941]
 layout_mode = 3
@@ -11,68 +12,23 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_onmh3")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1060449606]
-layout_mode = 1
+[node name="UI" type="CanvasLayer" parent="." unique_id=1945134742]
+
+[node name="Toolbar" type="VBoxContainer" parent="UI" unique_id=783541657]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-
-[node name="Parameters" type="HBoxContainer" parent="VBoxContainer" unique_id=1024751983]
-layout_mode = 2
-
-[node name="GridSize" type="Label" parent="VBoxContainer/Parameters" unique_id=1627875170]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Grid size : "
-horizontal_alignment = 1
-
-[node name="XParam" type="LineEdit" parent="VBoxContainer/Parameters" unique_id=164811429]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="YParam" type="LineEdit" parent="VBoxContainer/Parameters" unique_id=1366967968]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Generate" type="Button" parent="VBoxContainer/Parameters" unique_id=745257779]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Generate"
-
-[node name="Save" type="Button" parent="VBoxContainer/Parameters" unique_id=1109068292]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-text = "Save as :"
-
-[node name="MapName" type="LineEdit" parent="VBoxContainer/Parameters" unique_id=1295222258]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_vertical = 4
-
-[node name="Load" type="MenuButton" parent="VBoxContainer/Parameters" unique_id=1475238479]
-layout_mode = 2
-text = "Load"
-
-[node name="Canvas" type="HBoxContainer" parent="VBoxContainer" unique_id=1178650891]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="Toolbar" type="VBoxContainer" parent="VBoxContainer/Canvas" unique_id=783541657]
-layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 alignment = 1
 
-[node name="Type" type="Control" parent="VBoxContainer/Canvas/Toolbar" unique_id=722975884]
+[node name="Type" type="Control" parent="UI/Toolbar" unique_id=722975884]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/Canvas/Toolbar/Type" unique_id=174426158]
+[node name="Label" type="Label" parent="UI/Toolbar/Type" unique_id=174426158]
 layout_mode = 0
 offset_top = -51.0
 offset_right = 174.0
@@ -80,11 +36,61 @@ offset_bottom = -28.0
 text = "Type"
 horizontal_alignment = 1
 
-[node name="OptionButton" type="OptionButton" parent="VBoxContainer/Canvas/Toolbar/Type" unique_id=1356591560]
+[node name="OptionButton" type="OptionButton" parent="UI/Toolbar/Type" unique_id=1356591560]
 layout_mode = 0
 offset_top = -24.0
 offset_right = 174.0
 offset_bottom = -4.0
 
-[node name="GridSpace" type="Control" parent="VBoxContainer/Canvas" unique_id=41765968]
+[node name="Parameters" type="HBoxContainer" parent="UI" unique_id=1024751983]
+offset_right = 1920.0
+offset_bottom = 31.0
+
+[node name="GridSize" type="Label" parent="UI/Parameters" unique_id=1627875170]
 layout_mode = 2
+size_flags_horizontal = 3
+text = "Grid size : "
+horizontal_alignment = 1
+
+[node name="XParam" type="LineEdit" parent="UI/Parameters" unique_id=164811429]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="YParam" type="LineEdit" parent="UI/Parameters" unique_id=1366967968]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Generate" type="Button" parent="UI/Parameters" unique_id=745257779]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Generate"
+
+[node name="Save" type="Button" parent="UI/Parameters" unique_id=1109068292]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+text = "Save as :"
+
+[node name="MapName" type="LineEdit" parent="UI/Parameters" unique_id=1295222258]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="Load" type="MenuButton" parent="UI/Parameters" unique_id=1475238479]
+layout_mode = 2
+text = "Load"
+
+[node name="World" type="Node3D" parent="." unique_id=726392147]
+
+[node name="GridSpace" type="Node3D" parent="World" unique_id=962186197]
+
+[node name="OrbitCameraRig" type="Node3D" parent="World" unique_id=659516790]
+script = ExtResource("2_hdgag")
+
+[node name="Pitch" type="Node3D" parent="World/OrbitCameraRig" unique_id=634590351]
+
+[node name="Camera3D" type="Camera3D" parent="World/OrbitCameraRig/Pitch" unique_id=1178586548]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="World" unique_id=380400916]

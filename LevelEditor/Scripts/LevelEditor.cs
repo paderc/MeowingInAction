@@ -13,7 +13,7 @@ public partial class LevelEditor : Control
 	LineEdit MapName;
 	Node3D GridSpace;
 	BattleGrid battle;
-	
+
 	//Loading
 	MenuButton LoadMenu;
 	Dictionary<int, string> IndexToGridPath = new Dictionary<int, string>();
@@ -21,9 +21,10 @@ public partial class LevelEditor : Control
 	//Painting
 	OptionButton optionButton;
 	GridType currentPaint;
+
 	public override void _Ready()
 	{
-		getNodes();	
+		getNodes();
 		Generate.Pressed += () => generate();
 		Save.Pressed += () => saveCurrentGrid();
 		loadGrids();
@@ -32,14 +33,18 @@ public partial class LevelEditor : Control
 
 	public void getNodes()
 	{
-		XParam = GetNode<LineEdit>("VBoxContainer/Parameters/XParam");
-		YParam = GetNode<LineEdit>("VBoxContainer/Parameters/YParam");
-		Generate = GetNode<Button>("VBoxContainer/Parameters/Generate");
-		Save = GetNode<Button>("VBoxContainer/Parameters/Save");
-		MapName = GetNode<LineEdit>("VBoxContainer/Parameters/MapName");
-		GridSpace = GetNode<Node3D>("VBoxContainer/Canvas/GridSpace");
-		optionButton = GetNode<OptionButton>("VBoxContainer/Canvas/Toolbar/Type/OptionButton");
-		LoadMenu = GetNode<MenuButton>("VBoxContainer/Parameters/Load");
+		// Adjust these paths to match your new scene tree:
+		// UI (CanvasLayer) / VBoxContainer / ...
+		XParam = GetNode<LineEdit>("UI/Parameters/XParam");
+		YParam = GetNode<LineEdit>("UI/Parameters/YParam");
+		Generate = GetNode<Button>("UI/Parameters/Generate");
+		Save = GetNode<Button>("UI/Parameters/Save");
+		MapName = GetNode<LineEdit>("UI/Parameters/MapName");
+		optionButton = GetNode<OptionButton>("UI/Toolbar/Type/OptionButton");
+		LoadMenu = GetNode<MenuButton>("UI/Parameters/Load");
+
+		// GridSpace now lives in the 3D world branch, not under this Control
+		GridSpace = GetNode<Node3D>("/root/LevelEditor/World/GridSpace");
 	}
 
 	public void loadSelectedGrid(long index)
@@ -62,6 +67,8 @@ public partial class LevelEditor : Control
 		DirAccess dir = DirAccess.Open(GridSavePath);
 		int i = 0;
 		PopupMenu popup = LoadMenu.GetPopup();
+		popup.Clear();
+		IndexToGridPath.Clear();
 		foreach (string file in dir.GetFiles())
 		{
 			popup.AddCheckItem(file);
@@ -88,7 +95,6 @@ public partial class LevelEditor : Control
 			optionButton.AddItem(key.ToString());
 		}
 		optionButton.ItemSelected += (index) => onOptionSelected(index);
-
 	}
 
 	public void onOptionSelected(long index)
@@ -117,14 +123,29 @@ public partial class LevelEditor : Control
 		battle.currentHovered.setType(currentPaint);
 	}
 
+	bool paintedThisPress = false;
+
 	public override void _Input(InputEvent @event)
 	{
-		if (battle != null)
+		if (battle == null) return;
+
+		if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left)
 		{
-			if (Input.IsMouseButtonPressed(MouseButton.Left))
+			if (mb.Pressed)
 			{
-				if (battle.currentHovered != null) changeCurrentBlock();
+				paintedThisPress = false;
+				if (battle.currentHovered != null)
+				{
+					changeCurrentBlock();
+					paintedThisPress = true;
+				}
 			}
+		}
+		// Optional: paint-while-dragging, block-by-block, without re-painting
+		// the same block repeatedly on every mouse-motion event
+		else if (@event is InputEventMouseMotion && Input.IsMouseButtonPressed(MouseButton.Left))
+		{
+			if (battle.currentHovered != null) changeCurrentBlock();
 		}
 	}
 }
