@@ -1,0 +1,4 @@
+[gd_scene format=3 uid="uid://cc3v5r0j1ro36"]
+
+[node name="Settings" type="Button" unique_id=474981209]
+size_flags_vertical = 3

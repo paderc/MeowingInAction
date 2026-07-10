@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://bl5vlimjg7o4c"]
+
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/single_use_scripts/buttonScripts/Miau.cs" id="1_fd1yu"]
+
+[node name="Meow" type="Button" unique_id=1613672568]
+size_flags_vertical = 3
+script = ExtResource("1_fd1yu")

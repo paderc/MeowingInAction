@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://djelum4h56m00"]
+
+[ext_resource type="Script" uid="uid://8d02h7t1wbyn" path="res://scripts/single_use_scripts/buttonScripts/Quit.cs" id="1_7lq55"]
+
+[node name="Exit" type="Button" unique_id=370554271]
+size_flags_vertical = 3
+script = ExtResource("1_7lq55")

@@ -1,0 +1,10 @@
+{
+  "start_deck":"usa_spawn",
+  "usa_spawn":{
+	"text":"FOR THE MOCRACY",
+	"desc":"Summon 2 and attack 1",
+	"actions":["SPAWN","ATTACK"],
+	"base_value":["2","1"],
+	"cost":"1"
+  }
+}

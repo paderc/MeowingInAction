@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://8xjkjrwwhvjk"]
+
+[ext_resource type="Script" uid="uid://bysrjt31v1xhs" path="res://scripts/single_use_scripts/buttonScripts/Play.cs" id="1_dnbe2"]
+
+[node name="Play" type="Button" unique_id=266406120]
+size_flags_vertical = 3
+script = ExtResource("1_dnbe2")

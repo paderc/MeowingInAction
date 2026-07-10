@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://v72sc036151r"]
+
+[ext_resource type="Script" uid="uid://gw128xjv0n7a" path="res://scripts/single_use_scripts/MainWindow.cs" id="1_yqjtg"]
+[ext_resource type="PackedScene" uid="uid://ba3lwdh06boyx" path="res://scenes/StartScenes/StartScreen.tscn" id="2_5fwng"]
+
+[node name="MainWindow" type="Control" unique_id=1720626036]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_yqjtg")
+
+[node name="StartMenu" parent="." unique_id=809050274 instance=ExtResource("2_5fwng")]
+layout_mode = 1

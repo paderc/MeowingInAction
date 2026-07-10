@@ -1,0 +1,72 @@
+[gd_scene format=3 uid="uid://ba3lwdh06boyx"]
+
+[ext_resource type="PackedScene" uid="uid://dc0w7totembh6" path="res://scenes/menu.tscn" id="2_8oboy"]
+[ext_resource type="Theme" uid="uid://b5vntabvtkql3" path="res://scenes/mainMenuTheme.tres" id="2_xfeue"]
+
+[sub_resource type="Gradient" id="Gradient_vsb4k"]
+offsets = PackedFloat32Array(0, 0.48192772, 1.007)
+colors = PackedColorArray(0.05340576, 0.22266096, 0.2734375, 1, 0.13333334, 0.4509804, 0.61960787, 1, 0.120010376, 0.20909762, 0.55859375, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_jpq7o"]
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_app01"]
+noise = SubResource("FastNoiseLite_jpq7o")
+color_ramp = SubResource("Gradient_vsb4k")
+seamless = true
+normalize = false
+seamless_blend_skirt = 1.0
+
+[sub_resource type="Animation" id="Animation_p6fgn"]
+resource_name = "ColorShift"
+length = 4.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_jep6e"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rn7ww"]
+_data = {
+&"ColorShift": SubResource("Animation_p6fgn"),
+&"RESET": SubResource("Animation_jep6e")
+}
+
+[node name="StartMenu" type="Control" unique_id=809050274]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MenuBackground" type="TextureRect" parent="." unique_id=1284617191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("NoiseTexture2D_app01")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=694205292]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -364.5
+offset_top = 50.0
+offset_right = 364.5
+offset_bottom = 201.0
+grow_horizontal = 2
+theme = ExtResource("2_xfeue")
+text = "MIA
+Meowing In Action"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title" unique_id=1584666494]
+libraries/ = SubResource("AnimationLibrary_rn7ww")
+autoplay = &"ColorShift"
+
+[node name="Menu" parent="." unique_id=1866018866 instance=ExtResource("2_8oboy")]
+layout_mode = 1
