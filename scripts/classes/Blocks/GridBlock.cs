@@ -70,7 +70,8 @@ public partial class GridBlock : StaticBody3D
 		Label3D label = new Label3D();
 		label.Text = (String)(gridPosition.X + "," + gridPosition.Y);
 		label.PixelSize = 0.01f;
-		label.FontSize = (int)(0.3 * blockSize * 100);
+		if (gridPosition.X < 10 && gridPosition.Y < 10) label.FontSize = (int)(0.6 * blockSize * 100);
+		else if (gridPosition.X > 9 || gridPosition.Y > 9) label.FontSize = (int)(0.35 * blockSize * 100);
 		label.Billboard = BaseMaterial3D.BillboardModeEnum.Disabled;
 		label.RotationDegrees = new Vector3(-90, 0, 0); // lie flat, facing up
 		label.Position = new Vector3(0, 0.01f, 0);
