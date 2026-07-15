@@ -5,28 +5,34 @@ using System.Linq;
 
 public partial class BattleGrid : Node3D
 {
-	float blockSize = 2.0f; // world-space size per block; tweak as needed
+	float blockSize = 2.0f;
 	public GridBlock currentHovered;
 	public Vector2I gridSize;
 	public Array<GridBlock> blocks = new Array<GridBlock>();
-	Node3D gridContainer = new Node3D();
+	Node3D gridContainer;
 
 	private Array<SerializableBlock> serializableBlocks = null;
 
 	public BattleGrid(int x, int y)
 	{
 		gridSize = new Vector2I(x, y);
+		gridContainer = new Node3D();
+
 	}
 
 	public BattleGrid(int x, int y, SerializableGrid sGrid)
 	{
 		gridSize = new Vector2I(x, y);
 		serializableBlocks = sGrid.grid;
+		gridContainer = new Node3D();
+
 	}
 
 	public override void _Ready()
 	{
 		initializeGrid();
+		this.Name = "BattleGrid";
+		gridContainer.Name = "GridContainer";
 	}
 
 	public void initializeGrid()
@@ -39,11 +45,10 @@ public partial class BattleGrid : Node3D
 
 	void setupGridContainer()
 	{
-		// Center the grid on the origin so the camera rig can orbit around (0,0,0)
 		gridContainer.Position = new Vector3(
-			-(gridSize.X * blockSize) / 2f,
+			-(gridSize.X * blockSize) / 2,
 			0,
-			-(gridSize.Y * blockSize) / 2f
+			-(gridSize.Y * blockSize) / 2
 			);
 		AddChild(gridContainer);
 	}

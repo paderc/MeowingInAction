@@ -1,25 +1,30 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.IO;
 
 public partial class LevelEditor : Control
 {
-	const string GridSavePath = "res://resources/Grids";
-
 	LineEdit XParam;
 	LineEdit YParam;
 	Button Generate;
 	Button Save;
-	LineEdit MapName;
+	
 	Node3D GridSpace;
 	BattleGrid battle;
+
+	//Map parameters
+	LineEdit MapName;
+	OptionButton mapStage;
+	Stage currentStage;
+	Dictionary<int, Stage> IndexToStage = new Dictionary<int, Stage>();
 
 	//Loading
 	MenuButton LoadMenu;
 	Dictionary<int, string> IndexToGridPath = new Dictionary<int, string>();
 
 	//Painting
-	OptionButton optionButton;
+	OptionButton blockBrushOption;
 	GridType currentPaint;
 
 	public override void _Ready()
@@ -28,43 +33,59 @@ public partial class LevelEditor : Control
 		Generate.Pressed += () => generate();
 		Save.Pressed += () => saveCurrentGrid();
 		loadGrids();
+		LoadMenu.GetPopup().IdPressed += (id) => loadSelectedGrid(id);
 		setupOptions();
+		setupMapStages();
 	}
 
 	public void getNodes()
 	{
-		// Adjust these paths to match your new scene tree:
-		// UI (CanvasLayer) / VBoxContainer / ...
 		XParam = GetNode<LineEdit>("UI/Parameters/XParam");
 		YParam = GetNode<LineEdit>("UI/Parameters/YParam");
 		Generate = GetNode<Button>("UI/Parameters/Generate");
 		Save = GetNode<Button>("UI/Parameters/Save");
-		MapName = GetNode<LineEdit>("UI/Parameters/MapName");
-		optionButton = GetNode<OptionButton>("UI/Toolbar/Type/OptionButton");
+		MapName = GetNode<LineEdit>("UI/Parameters/MapParameters/MapName");
+		mapStage = GetNode<OptionButton>("UI/Parameters/MapParameters/MapStage");
+		blockBrushOption = GetNode<OptionButton>("UI/Toolbar/Type/OptionButton");
 		LoadMenu = GetNode<MenuButton>("UI/Parameters/Load");
+		GridSpace = GetNode<Node3D>("Battle/GridSpace");
+	}
 
-		// GridSpace now lives in the 3D world branch, not under this Control
-		GridSpace = GetNode<Node3D>("/root/LevelEditor/World/GridSpace");
+	void setupMapStages()
+	{
+		PopupMenu popupMenu = mapStage.GetPopup();
+		int i = 0;
+		foreach (Stage stage in Enum.GetValues(typeof(Stage)))
+		{
+			IndexToStage.Add(i, stage);
+			popupMenu.AddItem(stage.ToString());
+			i++;
+		}
+		popupMenu.IdPressed += (id) => changeCurrentStage(id);
+	}
+
+	void changeCurrentStage(long index)
+	{
+		IndexToStage.TryGetValue((int)index, out Stage stage);
+		currentStage = stage;
+		loadGrids();
 	}
 
 	public void loadSelectedGrid(long index)
 	{
 		if (!IndexToGridPath.TryGetValue((int)index, out string path)) return;
-
-		if (battle != null)
-		{
-			battle.QueueFree();
-			battle = null;
-		}
-
-		SerializableGrid sGrid = (SerializableGrid)ResourceLoader.Load(GridSavePath + "/" + path);
-		battle = new BattleGrid(sGrid.sizeX, sGrid.sizeY, sGrid);
-		GridSpace.AddChild(battle);
+		SerializableGrid sGrid = (SerializableGrid)ResourceLoader.Load(Paths.GridSavePath + "/" + path);
+		BattleLoader.loadOnto(sGrid, battle, GridSpace);
 	}
 
 	public void loadGrids()
 	{
-		DirAccess dir = DirAccess.Open(GridSavePath);
+		DirAccess dir = DirAccess.Open(Paths.GridSavePath + "/" + currentStage.ToString());
+		if (dir == null)
+		{
+			GD.PrintErr($"Cannot open directory: {Paths.GridSavePath}");
+			return;
+		}
 		int i = 0;
 		PopupMenu popup = LoadMenu.GetPopup();
 		popup.Clear();
@@ -75,16 +96,31 @@ public partial class LevelEditor : Control
 			IndexToGridPath.Add(i, file);
 			i++;
 		}
-		popup.IdPressed += (id) => loadSelectedGrid(id);
 	}
 
 	public void saveCurrentGrid()
 	{
-		if (MapName.Text == null) return;
-		if (battle == null) { GD.PrintErr("Cannot save empty battle"); return; }
+		if (string.IsNullOrEmpty(MapName.Text))
+		{
+			GD.PrintErr("Map name is empty.");
+			return;
+		}
+		if (battle == null)
+		{
+			GD.PrintErr("Cannot save empty battle.");
+			return;
+		}
+
+		string godotDirPath = Paths.GridSavePath + "/" + currentStage.ToString();
+		string osDirPath = ProjectSettings.GlobalizePath(godotDirPath);
+
+		Directory.CreateDirectory(osDirPath);
+
 		SerializableGrid serializableGrid = new SerializableGrid(MapName.Text, battle);
-		ResourceSaver.Save(serializableGrid, GridSavePath + "/" + serializableGrid.name + ".res");
+		string filePath = godotDirPath + "/" + serializableGrid.name + ".res";
+		ResourceSaver.Save(serializableGrid, filePath);
 		loadGrids();
+
 	}
 
 	public void setupOptions()
@@ -92,14 +128,14 @@ public partial class LevelEditor : Control
 		if (GridBlock.typeToPathDict == null) GridBlock.findTexturePaths();
 		foreach (GridType key in GridBlock.typeToPathDict.Keys)
 		{
-			optionButton.AddItem(key.ToString());
+			blockBrushOption.AddItem(key.ToString());
 		}
-		optionButton.ItemSelected += (index) => onOptionSelected(index);
+		blockBrushOption.ItemSelected += (index) => onOptionSelected(index);
 	}
 
 	public void onOptionSelected(long index)
 	{
-		string name = optionButton.GetItemText((int)index);
+		string name = blockBrushOption.GetItemText((int)index);
 		if (!Enum.TryParse<GridType>(name, true, out GridType gridType)) GD.PrintErr("Didnt find a gridType of " + name);
 		else currentPaint = gridType;
 	}
@@ -141,8 +177,6 @@ public partial class LevelEditor : Control
 				}
 			}
 		}
-		// Optional: paint-while-dragging, block-by-block, without re-painting
-		// the same block repeatedly on every mouse-motion event
 		else if (@event is InputEventMouseMotion && Input.IsMouseButtonPressed(MouseButton.Left))
 		{
 			if (battle.currentHovered != null) changeCurrentBlock();

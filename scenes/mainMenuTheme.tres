@@ -1,6 +1,6 @@
 [gd_resource type="Theme" format=3 uid="uid://b5vntabvtkql3"]
 
-[ext_resource type="FontFile" uid="uid://c603triufxstu" path="res://resources/Fonts/minster.ttf" id="1_y8j04"]
+[ext_resource type="FontFile" uid="uid://c603triufxstu" path="res://resources/fonts/minster.ttf" id="1_y8j04"]
 
 [resource]
 default_font = ExtResource("1_y8j04")

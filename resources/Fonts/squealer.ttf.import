@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bpvwv7tkwg054"
-path="res://.godot/imported/squealer.ttf-bcbf74d6946cb104208850e8c15b1af6.fontdata"
+path="res://.godot/imported/squealer.ttf-f8470cf1c6e0b08bc19265ae04d354a6.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/squealer.ttf"
-dest_files=["res://.godot/imported/squealer.ttf-bcbf74d6946cb104208850e8c15b1af6.fontdata"]
+source_file="res://resources/fonts/squealer.ttf"
+dest_files=["res://.godot/imported/squealer.ttf-f8470cf1c6e0b08bc19265ae04d354a6.fontdata"]
 
 [params]
 

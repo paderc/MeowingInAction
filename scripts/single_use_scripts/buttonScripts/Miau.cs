@@ -12,6 +12,7 @@ public partial class Miau : NameButton
 	List<TextureRect> imageList = new List<TextureRect>();
 	public override void _Ready()
 	{
+		base._Ready();
 		Pressed += onButtonPressed;
 		AddChild(soundPlayer);
 		loadSoundFiles();

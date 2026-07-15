@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://c603triufxstu"
-path="res://.godot/imported/minster.ttf-69fd885b032b0d08e110b3f1ce24e4d1.fontdata"
+path="res://.godot/imported/minster.ttf-3c8fa0f659a717b27d810d8d330c6a78.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/minster.ttf"
-dest_files=["res://.godot/imported/minster.ttf-69fd885b032b0d08e110b3f1ce24e4d1.fontdata"]
+source_file="res://resources/fonts/minster.ttf"
+dest_files=["res://.godot/imported/minster.ttf-3c8fa0f659a717b27d810d8d330c6a78.fontdata"]
 
 [params]
 

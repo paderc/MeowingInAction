@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://de7ac1hrwbgn2"
-path="res://.godot/imported/planob.ttf-bd703aad9589474fc786fd980efc1147.fontdata"
+path="res://.godot/imported/planob.ttf-f52f4b3bbff19e535a4a303f55ddf299.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/planob.ttf"
-dest_files=["res://.godot/imported/planob.ttf-bd703aad9589474fc786fd980efc1147.fontdata"]
+source_file="res://resources/fonts/planob.ttf"
+dest_files=["res://.godot/imported/planob.ttf-f52f4b3bbff19e535a4a303f55ddf299.fontdata"]
 
 [params]
 

@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bxo0hctxbgkjy"
-path="res://.godot/imported/melee.ttf-104d033b74be341d043f836787dcc26e.fontdata"
+path="res://.godot/imported/melee.ttf-36c81611aa6f9c9a4baed3c9e5fa4539.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/melee.ttf"
-dest_files=["res://.godot/imported/melee.ttf-104d033b74be341d043f836787dcc26e.fontdata"]
+source_file="res://resources/fonts/melee.ttf"
+dest_files=["res://.godot/imported/melee.ttf-36c81611aa6f9c9a4baed3c9e5fa4539.fontdata"]
 
 [params]
 

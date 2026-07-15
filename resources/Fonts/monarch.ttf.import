@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://jbtcy2madvua"
-path="res://.godot/imported/monarch.ttf-a4d62fc324975d9716e1d57ce3d029cb.fontdata"
+path="res://.godot/imported/monarch.ttf-1a65d099a3bf167a8966059752552bfb.fontdata"
 
 [deps]
 
-source_file="res://resources/Fonts/monarch.ttf"
-dest_files=["res://.godot/imported/monarch.ttf-a4d62fc324975d9716e1d57ce3d029cb.fontdata"]
+source_file="res://resources/fonts/monarch.ttf"
+dest_files=["res://.godot/imported/monarch.ttf-1a65d099a3bf167a8966059752552bfb.fontdata"]
 
 [params]
 

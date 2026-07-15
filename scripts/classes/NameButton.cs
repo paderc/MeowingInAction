@@ -7,7 +7,7 @@ public partial class NameButton : Button
 	{
 		this.Text = this.Name;
 		this.SizeFlagsVertical = SizeFlags.ExpandFill;
-        this.SizeFlagsHorizontal = SizeFlags.ExpandFill;
-    }
+		this.SizeFlagsHorizontal = SizeFlags.ExpandFill;
+	}
 
 }

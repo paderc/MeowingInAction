@@ -5,7 +5,6 @@ using System.Transactions;
 
 public partial class Card : Control
 {
-	Draggable draggableComponent;
 	TextureRect cardTexture = new TextureRect();
 	Label text;
 	List<Action> actionList = new List<Action>();
@@ -13,7 +12,6 @@ public partial class Card : Control
 	
 	public Card()
 	{
-		draggableComponent = new Draggable(this);
 		cardTexture.AddChild(text);
 		setupTexture("res://resources/images/backgroundNoiseTexture.res");
 	}

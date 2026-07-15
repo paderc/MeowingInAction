@@ -19,7 +19,6 @@ public partial class OrbitCameraRig : Node3D
 		pitchNode = GetNode<Node3D>("Pitch");
 		camera = pitchNode.GetNode<Camera3D>("Camera3D");
 
-		// Start with a reasonable top-down-ish angle
 		pitchNode.RotationDegrees = new Vector3(-40, 0, 0);
 		camera.Position = new Vector3(0, 0, currentZoom);
 		camera.LookAt(GlobalPosition, Vector3.Up);
@@ -38,10 +37,8 @@ public partial class OrbitCameraRig : Node3D
 		}
 		else if (@event is InputEventMouseMotion mm && dragging)
 		{
-			// Yaw: rotate the whole rig around its own Y axis (world up)
 			RotateY(-mm.Relative.X * rotateSpeed);
 
-			// Pitch: rotate only the inner Pitch node around local X
 			Vector3 pitchRot = pitchNode.RotationDegrees;
 			pitchRot.X = Mathf.Clamp(pitchRot.X - mm.Relative.Y * rotateSpeed * 57.3f, minPitch, maxPitch);
 			pitchNode.RotationDegrees = pitchRot;

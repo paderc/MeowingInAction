@@ -1,11 +1,80 @@
-[gd_scene format=3 uid="uid://dn34gf0ecwc16"]
+[gd_scene format=3 uid="uid://cd0dksstuic47"]
 
-[ext_resource type="Texture2D" uid="uid://pncw4jv6hvgy" path="res://resources/images/buttonBG/normalButton.res" id="1_6u4wf"]
-[ext_resource type="Script" uid="uid://doqv63m1te4lj" path="res://testing/Test.cs" id="2_6u4wf"]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6u4wf"]
 
-[node name="TextureRect" type="TextureRect" unique_id=916547470]
-offset_right = 1920.0
-offset_bottom = 1080.0
-texture = ExtResource("1_6u4wf")
-expand_mode = 1
-script = ExtResource("2_6u4wf")
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d81rb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_up0cc"]
+
+[node name="Card" type="Control" unique_id=1110159579]
+custom_minimum_size = Vector2(300, 450)
+layout_mode = 3
+anchors_preset = 0
+
+[node name="BG" type="TextureRect" parent="." unique_id=674126520]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_6u4wf")
+
+[node name="Icon" type="TextureRect" parent="." unique_id=607628317]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.25
+anchor_top = 0.1
+anchor_right = 0.75
+anchor_bottom = 0.4
+offset_left = -20.0
+offset_top = -20.0
+offset_right = 20.0
+offset_bottom = 20.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_d81rb")
+
+[node name="TitleBG" type="TextureRect" parent="." unique_id=489208562]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.15
+anchor_top = 0.5
+anchor_right = 0.85
+anchor_bottom = 0.6
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_up0cc")
+
+[node name="TitleLabel" type="Label" parent="TitleBG" unique_id=154036335]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gowno rzygi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescBG" type="TextureRect" parent="." unique_id=686983112]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.1
+anchor_top = 0.65
+anchor_right = 0.9
+anchor_bottom = 0.9
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_up0cc")
+
+[node name="DescLabel" type="Label" parent="DescBG" unique_id=575745648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gowno rzygi"
+horizontal_alignment = 1
+vertical_alignment = 1

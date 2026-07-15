@@ -3,12 +3,12 @@
 importer="mp3"
 type="AudioStreamMP3"
 uid="uid://ytbckarpk6hc"
-path="res://.godot/imported/miau2.mp3-d40208adaa9d77c77d4e9d4292b7e9bb.mp3str"
+path="res://.godot/imported/miau2.mp3-ce0a85c7b3a3ca46a5191c88b1612177.mp3str"
 
 [deps]
 
-source_file="res://resources/Sound/meowSounds/miau2.mp3"
-dest_files=["res://.godot/imported/miau2.mp3-d40208adaa9d77c77d4e9d4292b7e9bb.mp3str"]
+source_file="res://resources/sound/meowSounds/miau2.mp3"
+dest_files=["res://.godot/imported/miau2.mp3-ce0a85c7b3a3ca46a5191c88b1612177.mp3str"]
 
 [params]
 

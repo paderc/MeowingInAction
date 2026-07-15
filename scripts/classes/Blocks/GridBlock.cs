@@ -12,6 +12,16 @@ public partial class GridBlock : StaticBody3D
 	StandardMaterial3D material;
 	float blockSize;
 
+	Array<Ally> allies = new Array<Ally>();
+	Array<Enemy> enemies = new Array<Enemy>();
+
+	public override void _Ready()
+	{
+		base._Ready();
+		this.Name = "GridBlock" + gridPosition.ToString();
+		meshInstance.Name = "Mesh";
+	}
+
 	public GridBlock(GridType type, float blockSize)
 	{
 		if (typeToPathDict == null) findTexturePaths();
@@ -61,6 +71,7 @@ public partial class GridBlock : StaticBody3D
 
 		CollisionShape3D collision = new CollisionShape3D();
 		collision.Shape = box;
+		collision.Name = "Collision";
 		collision.Position = new Vector3(0, -0.025f, 0);
 		AddChild(collision);
 	}
@@ -68,10 +79,9 @@ public partial class GridBlock : StaticBody3D
 	private void setupLabel(float blockSize)
 	{
 		Label3D label = new Label3D();
-		label.Text = (String)(gridPosition.X + "," + gridPosition.Y);
+		label.Text = ($"{allies.Count} , {enemies.Count}");
 		label.PixelSize = 0.01f;
-		if (gridPosition.X < 10 && gridPosition.Y < 10) label.FontSize = (int)(0.6 * blockSize * 100);
-		else if (gridPosition.X > 9 || gridPosition.Y > 9) label.FontSize = (int)(0.35 * blockSize * 100);
+		label.FontSize = (int)(0.3 * blockSize * 100);
 		label.Billboard = BaseMaterial3D.BillboardModeEnum.Disabled;
 		label.RotationDegrees = new Vector3(-90, 0, 0); // lie flat, facing up
 		label.Position = new Vector3(0, 0.01f, 0);
@@ -113,8 +123,5 @@ public partial class GridBlock : StaticBody3D
 		material.EmissionEnergyMultiplier = hovered ? 0.6f : 0f;
 	}
 
-	public override void _Ready()
-	{
-		base._Ready();
-	}
+	
 }
