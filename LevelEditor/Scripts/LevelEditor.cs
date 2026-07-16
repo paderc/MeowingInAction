@@ -32,8 +32,7 @@ public partial class LevelEditor : Control
 		getNodes();
 		Generate.Pressed += () => generate();
 		Save.Pressed += () => saveCurrentGrid();
-		loadGrids();
-		LoadMenu.GetPopup().IdPressed += (id) => loadSelectedGrid(id);
+		LoadMenu.GetPopup().IdPressed += (id) => { loadSelectedGrid(id); };
 		setupOptions();
 		setupMapStages();
 	}
@@ -61,7 +60,7 @@ public partial class LevelEditor : Control
 			popupMenu.AddItem(stage.ToString());
 			i++;
 		}
-		popupMenu.IdPressed += (id) => changeCurrentStage(id);
+		popupMenu.IdPressed += (id) => { changeCurrentStage(id); loadGrids(); };
 	}
 
 	void changeCurrentStage(long index)
@@ -73,14 +72,21 @@ public partial class LevelEditor : Control
 
 	public void loadSelectedGrid(long index)
 	{
-		if (!IndexToGridPath.TryGetValue((int)index, out string path)) return;
-		SerializableGrid sGrid = (SerializableGrid)ResourceLoader.Load(Paths.GridSavePath + "/" + path);
-		BattleLoader.loadOnto(sGrid, battle, GridSpace);
+		if (!IndexToGridPath.TryGetValue((int)index, out string gridPath)) return;
+		SerializableGrid sGrid = (SerializableGrid)ResourceLoader.Load(gridPath);
+		if (battle != null)
+		{
+			battle.QueueFree();
+			battle = null;
+		}
+		battle = new BattleGrid(sGrid);
+		GridSpace.AddChild(battle);
 	}
 
 	public void loadGrids()
 	{
-		DirAccess dir = DirAccess.Open(Paths.GridSavePath + "/" + currentStage.ToString());
+		string folderPath = Paths.GridSavePath + "/" + currentStage.ToString();
+		DirAccess dir = DirAccess.Open(folderPath);
 		if (dir == null)
 		{
 			GD.PrintErr($"Cannot open directory: {Paths.GridSavePath}");
@@ -93,7 +99,7 @@ public partial class LevelEditor : Control
 		foreach (string file in dir.GetFiles())
 		{
 			popup.AddCheckItem(file);
-			IndexToGridPath.Add(i, file);
+			IndexToGridPath.Add(i, folderPath + "/" + file);
 			i++;
 		}
 	}

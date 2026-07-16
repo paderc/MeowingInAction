@@ -12,12 +12,7 @@ grow_vertical = 2
 
 [node name="Button" type="Button" parent="UI" unique_id=977808328]
 custom_minimum_size = Vector2(100, 100)
-anchors_preset = -1
-anchor_left = 0.05
-anchor_top = 0.05
-anchor_right = 0.1
-anchor_bottom = 0.1
-offset_right = 4.0
-offset_bottom = 46.0
-
-[node name="BattleSpace" type="Node3D" parent="." unique_id=262675636]
+offset_left = 37.0
+offset_top = 37.0
+offset_right = 137.0
+offset_bottom = 137.0

@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\classes\\battleloader.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\classes\\battleloader.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\leveleditor\\scripts\\leveleditor.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:leveleditor\\scripts\\leveleditor.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
@@ -34,7 +30,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,7 +38,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "Paths.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\single_use_scripts\\Paths.cs",
               "RelativeDocumentMoniker": "scripts\\single_use_scripts\\Paths.cs",
@@ -50,38 +46,24 @@
               "RelativeToolTip": "scripts\\single_use_scripts\\Paths.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAA8AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T21:43:31.353Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-13T21:43:31.353Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "LevelEditor.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\LevelEditor\\Scripts\\LevelEditor.cs",
               "RelativeDocumentMoniker": "LevelEditor\\Scripts\\LevelEditor.cs",
               "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\LevelEditor\\Scripts\\LevelEditor.cs",
               "RelativeToolTip": "LevelEditor\\Scripts\\LevelEditor.cs",
-              "ViewState": "AgIAAEAAAAAAAAAAAAAmwG8AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAAAqwEYAAAAOAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-07-13T21:33:31.029Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "BattleLoader.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\BattleLoader.cs",
-              "RelativeDocumentMoniker": "scripts\\classes\\BattleLoader.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\BattleLoader.cs",
-              "RelativeToolTip": "scripts\\classes\\BattleLoader.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T21:37:27.478Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "BattleGrid.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\BattleGrid.cs",
               "RelativeDocumentMoniker": "scripts\\classes\\BattleGrid.cs",
@@ -89,12 +71,11 @@
               "RelativeToolTip": "scripts\\classes\\BattleGrid.cs",
               "ViewState": "AgIAAAIAAAAAAAAAAAAowBwAAAACAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T21:20:40.518Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-13T21:20:40.518Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "Stage.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\Enums\\Stage.cs",
               "RelativeDocumentMoniker": "scripts\\classes\\Enums\\Stage.cs",
@@ -102,12 +83,11 @@
               "RelativeToolTip": "scripts\\classes\\Enums\\Stage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAHAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-07-13T18:20:06.591Z",
-              "EditorCaption": ""
+              "WhenOpened": "2026-07-13T18:20:06.591Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "Run.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\Run.cs",
               "RelativeDocumentMoniker": "scripts\\classes\\Run.cs",

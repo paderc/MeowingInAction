@@ -9,22 +9,19 @@ public partial class BattleGrid : Node3D
 	public GridBlock currentHovered;
 	public Vector2I gridSize;
 	public Array<GridBlock> blocks = new Array<GridBlock>();
-	Node3D gridContainer;
+	Node3D gridContainer = new Node3D();
 
-	private Array<SerializableBlock> serializableBlocks = null;
+    private Array<SerializableBlock> serializableBlocks = null;
 
 	public BattleGrid(int x, int y)
 	{
 		gridSize = new Vector2I(x, y);
-		gridContainer = new Node3D();
-
 	}
 
-	public BattleGrid(int x, int y, SerializableGrid sGrid)
+	public BattleGrid(SerializableGrid sGrid)
 	{
-		gridSize = new Vector2I(x, y);
+		gridSize = new Vector2I(sGrid.sizeX, sGrid.sizeY);
 		serializableBlocks = sGrid.grid;
-		gridContainer = new Node3D();
 
 	}
 
