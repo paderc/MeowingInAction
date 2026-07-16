@@ -9,9 +9,10 @@ public partial class LevelEditor : Control
 	LineEdit YParam;
 	Button Generate;
 	Button Save;
-	
-	Node3D GridSpace;
+
+	//Battle
 	BattleGrid battle;
+	Node battleNode;
 
 	//Map parameters
 	LineEdit MapName;
@@ -47,7 +48,6 @@ public partial class LevelEditor : Control
 		mapStage = GetNode<OptionButton>("UI/Parameters/MapParameters/MapStage");
 		blockBrushOption = GetNode<OptionButton>("UI/Toolbar/Type/OptionButton");
 		LoadMenu = GetNode<MenuButton>("UI/Parameters/Load");
-		GridSpace = GetNode<Node3D>("Battle/GridSpace");
 	}
 
 	void setupMapStages()
@@ -74,13 +74,15 @@ public partial class LevelEditor : Control
 	{
 		if (!IndexToGridPath.TryGetValue((int)index, out string gridPath)) return;
 		SerializableGrid sGrid = (SerializableGrid)ResourceLoader.Load(gridPath);
-		if (battle != null)
+		if (battleNode != null)
 		{
-			battle.QueueFree();
-			battle = null;
+			RemoveChild(battleNode);
+			battleNode.Free();
+			battleNode = null;
 		}
 		battle = new BattleGrid(sGrid);
-		GridSpace.AddChild(battle);
+		BattleLoader battleLoader = new BattleLoader(battle);
+		battleNode = battleLoader.addBattleTo(this);
 	}
 
 	public void loadGrids()
@@ -111,7 +113,7 @@ public partial class LevelEditor : Control
 			GD.PrintErr("Map name is empty.");
 			return;
 		}
-		if (battle == null)
+		if (battleNode == null)
 		{
 			GD.PrintErr("Cannot save empty battle.");
 			return;
@@ -152,12 +154,15 @@ public partial class LevelEditor : Control
 		int y = 0;
 		if (!int.TryParse(XParam.Text, out x) || !int.TryParse(YParam.Text, out y)) { GD.PushWarning("Cannot create such grid"); return; }
 		if (x <= 0 || y <= 0) { GD.PushWarning("Cannot create such grid"); return; }
-		if (battle != null)
+		if (battleNode != null)
 		{
-			battle.QueueFree();
+			RemoveChild(battleNode);
+			battleNode.Free();
+			battleNode = null;
 		}
 		battle = new BattleGrid(x, y);
-		GridSpace.AddChild(battle);
+		BattleLoader battleLoader = new BattleLoader(battle);
+		battleNode = battleLoader.addBattleTo(this);
 	}
 
 	private void changeCurrentBlock()

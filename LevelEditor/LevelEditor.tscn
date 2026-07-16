@@ -1,7 +1,6 @@
 [gd_scene format=3 uid="uid://c35c4pfq45ko"]
 
 [ext_resource type="Script" uid="uid://ci6qc4n36eiea" path="res://LevelEditor/Scripts/LevelEditor.cs" id="1_onmh3"]
-[ext_resource type="PackedScene" uid="uid://dowp7jhhygsaq" path="res://scenes/battle.tscn" id="2_hdgag"]
 
 [node name="LevelEditor" type="Control" unique_id=364268941]
 layout_mode = 3
@@ -94,5 +93,3 @@ layout_mode = 2
 layout_mode = 2
 text = "Load"
 flat = false
-
-[node name="Battle" parent="." unique_id=845623948 instance=ExtResource("2_hdgag")]

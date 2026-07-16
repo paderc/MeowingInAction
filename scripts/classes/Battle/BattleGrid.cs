@@ -11,7 +11,7 @@ public partial class BattleGrid : Node3D
 	public Array<GridBlock> blocks = new Array<GridBlock>();
 	Node3D gridContainer = new Node3D();
 
-    private Array<SerializableBlock> serializableBlocks = null;
+	private Array<SerializableBlock> serializableBlocks = null;
 
 	public BattleGrid(int x, int y)
 	{
