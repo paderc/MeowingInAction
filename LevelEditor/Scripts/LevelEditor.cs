@@ -131,8 +131,8 @@ public partial class LevelEditor : Control
 
 	public void setupOptions()
 	{
-		if (GridBlock.typeToPathDict == null) GridBlock.findTexturePaths();
-		foreach (GridType key in GridBlock.typeToPathDict.Keys)
+		if (GridBlock.typeToImageDict == null) GridBlock.findTexturePaths();
+		foreach (GridType key in GridBlock.typeToImageDict.Keys)
 		{
 			blockBrushOption.AddItem(key.ToString());
 		}

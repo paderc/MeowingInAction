@@ -4,7 +4,7 @@ using System;
 public partial class BattleLoader
 {
 	public BattleGrid battleGrid;
-	PackedScene battleScene 
+	PackedScene battleScene;
 	public BattleLoader()
 	{
 	}

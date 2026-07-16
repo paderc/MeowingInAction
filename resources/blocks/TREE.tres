@@ -1,0 +1,8 @@
+[gd_resource type="Resource" format=3 uid="uid://kkbdecdnfgik"]
+
+[ext_resource type="Script" uid="uid://bxptx2fxmgcwm" path="res://scripts/classes/Blocks/BlockImage.cs" id="1_4wsbj"]
+[ext_resource type="Texture2D" uid="uid://dnxd3pr7s2mnd" path="res://resources/images/block/tree.png" id="2_h0jyx"]
+
+[resource]
+script = ExtResource("1_4wsbj")
+texture = ExtResource("2_h0jyx")

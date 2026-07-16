@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="BlockImage" format=3 uid="uid://dox6dxry81w8m"]
+
+[ext_resource type="Script" uid="uid://bxptx2fxmgcwm" path="res://scripts/classes/Blocks/BlockImage.cs" id="1_mceqn"]
+[ext_resource type="Texture2D" uid="uid://cc3khlkyox58q" path="res://resources/images/block/dupczyciel.png" id="2_nrbb1"]
+
+[resource]
+script = ExtResource("1_mceqn")
+texture = ExtResource("2_nrbb1")
+metadata/_custom_type_script = "uid://bxptx2fxmgcwm"

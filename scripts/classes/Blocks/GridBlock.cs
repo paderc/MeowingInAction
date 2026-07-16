@@ -7,7 +7,7 @@ public partial class GridBlock : StaticBody3D
 	public Vector2I gridPosition;
 	public MeshInstance3D meshInstance;
 	public GridType type;
-	public static Dictionary<GridType, string> typeToPathDict;
+	public static Dictionary<GridType, BlockImage> typeToImageDict;
 
 	StandardMaterial3D material;
 	float blockSize;
@@ -24,7 +24,7 @@ public partial class GridBlock : StaticBody3D
 
 	public GridBlock(GridType type, float blockSize)
 	{
-		if (typeToPathDict == null) findTexturePaths();
+		if (typeToImageDict == null) findTexturePaths();
 		this.blockSize = blockSize;
 
 		setupMesh();
@@ -36,7 +36,7 @@ public partial class GridBlock : StaticBody3D
 
 	public GridBlock(GridType type, Vector2I gridPosition, float blockSize)
 	{
-		if (typeToPathDict == null) findTexturePaths();
+		if (typeToImageDict == null) findTexturePaths();
 		this.blockSize = blockSize;
 
 		setupMesh();
@@ -83,7 +83,7 @@ public partial class GridBlock : StaticBody3D
 		label.PixelSize = 0.01f;
 		label.FontSize = (int)(0.3 * blockSize * 100);
 		label.Billboard = BaseMaterial3D.BillboardModeEnum.Disabled;
-		label.RotationDegrees = new Vector3(-90, 0, 0); // lie flat, facing up
+		label.RotationDegrees = new Vector3(-90, 0, 0);
 		label.Position = new Vector3(0, 0.01f, 0);
 		label.HorizontalAlignment = HorizontalAlignment.Center;
 		label.VerticalAlignment = VerticalAlignment.Center;
@@ -93,34 +93,28 @@ public partial class GridBlock : StaticBody3D
 
 	public static void findTexturePaths()
 	{
-		Dictionary<string, string> blockTexturePaths = Json.ParseString(FileAccess.GetFileAsString("res://storage/BlockJSON.json")).As<Dictionary<string, string>>();
-
-		typeToPathDict = new Dictionary<GridType, string>();
-
-		foreach (string key in blockTexturePaths.Keys)
+		typeToImageDict = new Dictionary<GridType, BlockImage>();
+		DirAccess dir = DirAccess.Open(Paths.BlockResourcePath);
+		foreach (string file in dir.GetFiles())
 		{
-			if (!blockTexturePaths.TryGetValue(key, out string texturePath)) { GD.PrintErr("Cannot find " + key); }
-			if (!Enum.TryParse<GridType>(key, out GridType type)) { GD.PrintErr(key + " not recognized as enum"); }
-			typeToPathDict.Add(type, texturePath);
+			BlockImage image = GD.Load<BlockImage>(Paths.BlockResourcePath + "/" + file);
+			if (!Enum.TryParse<GridType>(file.GetBaseName(), out GridType type)) { GD.PrintErr(file + " not recognized as enum"); }
+			typeToImageDict.Add(type, image);
 		}
 	}
 
 	public void setType(GridType type)
 	{
 		this.type = type;
-		if (type == GridType.NULL) { material.AlbedoTexture = null; material.AlbedoColor = Colors.Gray; return; }
-		if (!typeToPathDict.TryGetValue(type, out string path)) { GD.PrintErr("No texture found for " + type.ToString()); return; }
-		Texture2D texture = (Texture2D)GD.Load(path);
-		if (texture == null) GD.PrintErr("Did not find texture at " + path);
+		if (type == GridType.NULL) { material.AlbedoTexture = null; material.AlbedoColor = Colors.White; return; }
+		if (!typeToImageDict.TryGetValue(type, out BlockImage image)) { GD.PrintErr("No texture found for " + type.ToString()); return; }
 		material.AlbedoColor = Colors.White;
-		material.AlbedoTexture = texture;
+		material.AlbedoTexture = image.texture;
 	}
 
 	public void setHovered(bool hovered)
 	{
-		material.EmissionEnabled = hovered;
-		material.Emission = hovered ? new Color(0.4f, 0.6f, 1f) : Colors.Black;
-		material.EmissionEnergyMultiplier = hovered ? 0.6f : 0f;
+		material.AlbedoColor = hovered ? Colors.Burlywood : Colors.White;
 	}
 
 	
