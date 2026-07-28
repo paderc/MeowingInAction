@@ -1,7 +1,23 @@
 [gd_scene format=3 uid="uid://bl5vlimjg7o4c"]
 
-[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/single_use_scripts/buttonScripts/Miau.cs" id="1_fd1yu"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="1_fd1yu"]
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="2_l61s0"]
 
-[node name="Meow" type="Button" unique_id=1613672568]
+[node name="Miau" type="TextureButton" unique_id=1761960695]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
 script = ExtResource("1_fd1yu")
+
+[node name="ResizableLabel" parent="." unique_id=1554987967 instance=ExtResource("2_l61s0")]
+layout_mode = 1
+text = "Meow"
+
+[node name="AutoResizeLabel" parent="ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 0.6
+
+[editable path="ResizableLabel"]

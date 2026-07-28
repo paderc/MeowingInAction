@@ -1,0 +1,9 @@
+[gd_resource type="Resource" script_class="Deck" format=3 uid="uid://btk4712e2djr0"]
+
+[ext_resource type="Resource" uid="uid://4hurp24xtcin" path="res://resources/cards/forTheMocracy.tres" id="1_4bqck"]
+[ext_resource type="Script" uid="uid://cna2icxc0o3ab" path="res://scripts/Card/Deck.cs" id="1_cd36h"]
+
+[resource]
+script = ExtResource("1_cd36h")
+baseCards = Array[Object]([ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck")])
+metadata/_custom_type_script = "uid://cna2icxc0o3ab"

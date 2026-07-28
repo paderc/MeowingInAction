@@ -1,7 +1,28 @@
-[gd_scene format=3 uid="uid://djelum4h56m00"]
+[gd_scene format=3 uid="uid://c6s1vf303at28"]
 
-[ext_resource type="Script" uid="uid://8d02h7t1wbyn" path="res://scripts/single_use_scripts/buttonScripts/Quit.cs" id="1_7lq55"]
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="2_hoiqn"]
 
-[node name="Exit" type="Button" unique_id=370554271]
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_kt6yb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3ix7p"]
+
+[node name="Exit" type="TextureButton" unique_id=1761960695]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
-script = ExtResource("1_7lq55")
+texture_normal = SubResource("PlaceholderTexture2D_kt6yb")
+texture_pressed = SubResource("PlaceholderTexture2D_3ix7p")
+stretch_mode = 0
+
+[node name="ResizableLabel" parent="." unique_id=1554987967 instance=ExtResource("2_hoiqn")]
+layout_mode = 1
+text = "Exit"
+
+[node name="AutoResizeLabel" parent="ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 0.6
+
+[editable path="ResizableLabel"]

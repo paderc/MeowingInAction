@@ -1,0 +1,22 @@
+[gd_scene format=3 uid="uid://degsxoigxict0"]
+
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="2_cmn1m"]
+
+[node name="Resume" type="TextureButton" unique_id=1761960695]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResizableLabel" parent="." unique_id=1554987967 instance=ExtResource("2_cmn1m")]
+layout_mode = 0
+anchors_preset = 0
+text = "Resume"
+
+[node name="AutoResizeLabel" parent="ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 0.6
+
+[editable path="ResizableLabel"]

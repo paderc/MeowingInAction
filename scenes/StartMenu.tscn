@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://ba3lwdh06boyx"]
+
+[ext_resource type="Script" uid="uid://cidl1ef7bnq51" path="res://scripts/Menus/StartMenu.cs" id="1_frkif"]
+[ext_resource type="Texture2D" uid="uid://cmawhpk4c6381" path="res://resources/images/defaultTexture.res" id="2_sf8pk"]
+[ext_resource type="Theme" uid="uid://b5vntabvtkql3" path="res://scenes/mainMenuTheme.tres" id="3_j6af4"]
+[ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/images/kotPrawyDol.png" id="4_xbxv1"]
+[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/BaseButton.tscn" id="5_aso40"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="6_cuvp2"]
+
+[sub_resource type="Animation" id="Animation_p6fgn"]
+resource_name = "ColorShift"
+length = 4.0
+loop_mode = 1
+
+[sub_resource type="Animation" id="Animation_jep6e"]
+length = 0.001
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_rn7ww"]
+_data = {
+&"ColorShift": SubResource("Animation_p6fgn"),
+&"RESET": SubResource("Animation_jep6e")
+}
+
+[node name="StartMenu" type="Control" unique_id=809050274]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("3_j6af4")
+script = ExtResource("1_frkif")
+
+[node name="MenuBackground" type="TextureRect" parent="." unique_id=1284617191]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_sf8pk")
+expand_mode = 1
+
+[node name="Title" type="Label" parent="." unique_id=694205292]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -364.5
+offset_top = 50.0
+offset_right = 364.5
+offset_bottom = 201.0
+grow_horizontal = 2
+theme = ExtResource("3_j6af4")
+text = "MIA
+Meowing In Action"
+horizontal_alignment = 1
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Title" unique_id=1584666494]
+libraries/ = SubResource("AnimationLibrary_rn7ww")
+autoplay = &"ColorShift"
+
+[node name="Cats" type="Control" parent="." unique_id=1245186466]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Cats" unique_id=1023844634]
+clip_contents = true
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("4_xbxv1")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ButtonArray" type="VBoxContainer" parent="." unique_id=985286660]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -182.0
+offset_right = 183.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" parent="ButtonArray" unique_id=986164777 instance=ExtResource("5_aso40")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Play" index="0" unique_id=1554987967]
+text = "Play"
+
+[node name="HSeparator1" type="HSeparator" parent="ButtonArray" unique_id=610287650]
+layout_mode = 2
+
+[node name="Meow" parent="ButtonArray" unique_id=442347762 instance=ExtResource("5_aso40")]
+layout_mode = 2
+script = ExtResource("6_cuvp2")
+
+[node name="ResizableLabel" parent="ButtonArray/Meow" index="0" unique_id=1554987967]
+text = "Meow"
+
+[node name="HSeparator2" type="HSeparator" parent="ButtonArray" unique_id=452545527]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Settings" parent="ButtonArray" unique_id=1880996083 instance=ExtResource("5_aso40")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Settings" index="0" unique_id=1554987967]
+text = "Settings"
+
+[node name="HSeparator3" type="HSeparator" parent="ButtonArray" unique_id=186644764]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Exit" parent="ButtonArray" unique_id=1233731315 instance=ExtResource("5_aso40")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Exit" index="0" unique_id=1554987967]
+text = "Exit"
+
+[editable path="ButtonArray/Play"]
+[editable path="ButtonArray/Play/ResizableLabel"]
+[editable path="ButtonArray/Meow"]
+[editable path="ButtonArray/Meow/ResizableLabel"]
+[editable path="ButtonArray/Settings"]
+[editable path="ButtonArray/Settings/ResizableLabel"]
+[editable path="ButtonArray/Exit"]
+[editable path="ButtonArray/Exit/ResizableLabel"]

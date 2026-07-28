@@ -1,0 +1,23 @@
+[gd_scene format=3 uid="uid://c0xl88sb1i45p"]
+
+[ext_resource type="FontFile" uid="uid://c603triufxstu" path="res://resources/fonts/minster.ttf" id="1_d83fj"]
+[ext_resource type="PackedScene" uid="uid://cp6wrovdctbg3" path="res://scenes/FontResizeComponent.tscn" id="2_qowxi"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_g2uj2"]
+font = ExtResource("1_d83fj")
+outline_size = 2
+outline_color = Color(0, 0, 0, 1)
+
+[node name="ResizableLabel" type="Label" unique_id=1554987967]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+label_settings = SubResource("LabelSettings_g2uj2")
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="AutoResizeLabel" parent="." unique_id=760233988 instance=ExtResource("2_qowxi")]

@@ -1,16 +1,16 @@
 [gd_scene format=3 uid="uid://v72sc036151r"]
 
-[ext_resource type="Script" uid="uid://gw128xjv0n7a" path="res://scripts/single_use_scripts/MainWindow.cs" id="1_yqjtg"]
-[ext_resource type="PackedScene" uid="uid://ba3lwdh06boyx" path="res://scenes/StartScenes/StartScreen.tscn" id="2_5fwng"]
+[ext_resource type="Script" uid="uid://uyxrutgcjhyr" path="res://scripts/Game/Game.cs" id="1_qbsmt"]
+[ext_resource type="Script" uid="uid://ueygrwskefw7" path="res://scripts/Game/GameWindowHandler.cs" id="2_qbsmt"]
 
-[node name="MainWindow" type="Control" unique_id=1720626036]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-script = ExtResource("1_yqjtg")
+[node name="Game" type="Node" unique_id=1313480960]
+script = ExtResource("1_qbsmt")
 
-[node name="StartMenu" parent="." unique_id=809050274 instance=ExtResource("2_5fwng")]
-layout_mode = 1
+[node name="WindowHandler" type="Node" parent="." unique_id=1625689653]
+script = ExtResource("2_qbsmt")
+
+[node name="MainLayer" type="CanvasLayer" parent="." unique_id=1219167168]
+layer = 0
+
+[node name="PopupLayer" type="CanvasLayer" parent="." unique_id=58040739]
+layer = 2

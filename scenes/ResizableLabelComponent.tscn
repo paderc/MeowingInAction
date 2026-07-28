@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://dfjg2pae2mhsa"]
+
+[ext_resource type="Script" uid="uid://dwtev6662k15a" path="res://scripts/Reusables/AutoResizeLabel.cs" id="1_1x34j"]
+
+[node name="ResizableLabelComponent" type="Node" unique_id=760233988]
+script = ExtResource("1_1x34j")
+ParentOccupationFraction = 0.289

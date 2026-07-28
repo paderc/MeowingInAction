@@ -1,0 +1,117 @@
+[gd_scene format=3 uid="uid://b2rk3bxu0we2g"]
+
+[ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/images/kotPrawyDol.png" id="1_873k0"]
+[ext_resource type="Script" uid="uid://khnqrpgji5d" path="res://scripts/Menus/InGameMenu.cs" id="1_epk5h"]
+[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/BaseButton.tscn" id="3_epk5h"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="4_2kxkv"]
+[ext_resource type="Script" uid="uid://bmur636jfjfeb" path="res://scripts/Menus/InGameMenuButtonHandler.cs" id="8_5yiv7"]
+
+[node name="InGameMenu" type="Control" unique_id=507847562]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_epk5h")
+
+[node name="Cats" type="Control" parent="." unique_id=323295905]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect2" type="TextureRect" parent="Cats" unique_id=1433021975]
+clip_contents = true
+layout_mode = 1
+offset_right = 1920.0
+offset_bottom = 1080.0
+pivot_offset_ratio = Vector2(0.5, 0.5)
+texture = ExtResource("1_873k0")
+expand_mode = 1
+stretch_mode = 4
+
+[node name="ButtonArray" type="VBoxContainer" parent="." unique_id=1134964094]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -183.0
+offset_top = -182.0
+offset_right = 183.0
+offset_bottom = 182.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Resume" parent="ButtonArray" unique_id=986164777 instance=ExtResource("3_epk5h")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Resume" index="0" unique_id=1554987967]
+text = "Resume"
+
+[node name="HSeparator" type="HSeparator" parent="ButtonArray" unique_id=714827182]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Meow" parent="ButtonArray" unique_id=491661652 instance=ExtResource("3_epk5h")]
+layout_mode = 2
+script = ExtResource("4_2kxkv")
+
+[node name="ResizableLabel" parent="ButtonArray/Meow" index="0" unique_id=1554987967]
+text = "Meow"
+
+[node name="HSeparator2" type="HSeparator" parent="ButtonArray" unique_id=1323405273]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Settings" parent="ButtonArray" unique_id=1081408105 instance=ExtResource("3_epk5h")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Settings" index="0" unique_id=1554987967]
+text = "Settings"
+
+[node name="HSeparator3" type="HSeparator" parent="ButtonArray" unique_id=646220981]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="Exit" parent="ButtonArray" unique_id=597914840 instance=ExtResource("3_epk5h")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/Exit" index="0" unique_id=1313986842]
+text = "Exit"
+
+[node name="AutoResizeLabel" parent="ButtonArray/Exit/ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 1.0
+
+[node name="HSeparator4" type="HSeparator" parent="ButtonArray" unique_id=1826737496]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.1
+
+[node name="ExitToDesktop" parent="ButtonArray" unique_id=1631371395 instance=ExtResource("3_epk5h")]
+layout_mode = 2
+
+[node name="ResizableLabel" parent="ButtonArray/ExitToDesktop" index="0" unique_id=1554987967]
+text = "Exit to desktop"
+
+[node name="InGameMenuButtonHandler" type="Node" parent="." unique_id=1913146931]
+script = ExtResource("8_5yiv7")
+
+[editable path="ButtonArray/Resume"]
+[editable path="ButtonArray/Resume/ResizableLabel"]
+[editable path="ButtonArray/Meow"]
+[editable path="ButtonArray/Meow/ResizableLabel"]
+[editable path="ButtonArray/Settings"]
+[editable path="ButtonArray/Settings/ResizableLabel"]
+[editable path="ButtonArray/Exit"]
+[editable path="ButtonArray/Exit/ResizableLabel"]
+[editable path="ButtonArray/ExitToDesktop"]
+[editable path="ButtonArray/ExitToDesktop/ResizableLabel"]

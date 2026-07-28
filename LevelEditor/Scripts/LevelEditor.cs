@@ -11,7 +11,7 @@ public partial class LevelEditor : Control
 	Button Save;
 
 	//Battle
-	BattleGrid battle;
+	Battle battle;
 	Node battleNode;
 
 	//Map parameters
@@ -80,9 +80,9 @@ public partial class LevelEditor : Control
 			battleNode.Free();
 			battleNode = null;
 		}
-		battle = new BattleGrid(sGrid);
+		battle = new Battle(sGrid);
 		BattleLoader battleLoader = new BattleLoader(battle);
-		battleNode = battleLoader.addBattleTo(this);
+		battleNode = battleLoader.getBattleNode();
 	}
 
 	public void loadGrids()
@@ -156,13 +156,12 @@ public partial class LevelEditor : Control
 		if (x <= 0 || y <= 0) { GD.PushWarning("Cannot create such grid"); return; }
 		if (battleNode != null)
 		{
-			RemoveChild(battleNode);
 			battleNode.Free();
 			battleNode = null;
 		}
-		battle = new BattleGrid(x, y);
+		battle = new Battle(x, y);
 		BattleLoader battleLoader = new BattleLoader(battle);
-		battleNode = battleLoader.addBattleTo(this);
+		battleNode = battleLoader.getBattleNode();
 	}
 
 	private void changeCurrentBlock()

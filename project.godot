@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="MeowingInAction"
-run/main_scene="uid://c35c4pfq45ko"
+run/main_scene="uid://v72sc036151r"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 
 [display]

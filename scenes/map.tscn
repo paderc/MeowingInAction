@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://cio0uhut0p0ub"]
+[gd_scene format=3 uid="uid://flfw4dx5ogbu"]
 
 [ext_resource type="Texture2D" uid="uid://tcabnm1l2av0" path="res://resources/images/mapBG/desert.jpg" id="1_4xfga"]
 
@@ -19,3 +19,8 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = ExtResource("1_4xfga")
 expand_mode = 1
+
+[node name="Level1" type="Control" parent="." unique_id=1497004508]
+anchors_preset = 0
+offset_right = 100.0
+offset_bottom = 100.0

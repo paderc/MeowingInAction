@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://4hurp24xtcin"]
+
+[ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="1_np0tm"]
+
+[sub_resource type="CSharpScript" id="CSharpScript_np0tm"]
+
+[resource]
+script = ExtResource("1_np0tm")
+cost = 1
+metadata/_custom_type_script = "uid://erb7rg5r517k"

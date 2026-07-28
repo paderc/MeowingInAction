@@ -1,7 +1,21 @@
 [gd_scene format=3 uid="uid://8xjkjrwwhvjk"]
 
-[ext_resource type="Script" uid="uid://bysrjt31v1xhs" path="res://scripts/single_use_scripts/buttonScripts/Play.cs" id="1_dnbe2"]
+[ext_resource type="Script" uid="uid://bysrjt31v1xhs" path="res://scripts/Button/Play.cs" id="1_dnbe2"]
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="2_2771v"]
 
-[node name="Play" type="Button" unique_id=266406120]
-size_flags_vertical = 3
+[node name="Play" type="TextureButton" unique_id=1418376666]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 script = ExtResource("1_dnbe2")
+
+[node name="ResizableLabel" parent="." unique_id=1554987967 instance=ExtResource("2_2771v")]
+layout_mode = 1
+text = "Play"
+
+[node name="AutoResizeLabel" parent="ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 0.6
+
+[editable path="ResizableLabel"]

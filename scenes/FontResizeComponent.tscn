@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cp6wrovdctbg3"]
+
+[ext_resource type="Script" uid="uid://dwtev6662k15a" path="res://scripts/Reusables/AutoResizeLabel.cs" id="1_73wc6"]
+
+[node name="AutoResizeLabel" type="Node" unique_id=760233988]
+script = ExtResource("1_73wc6")

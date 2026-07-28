@@ -1,0 +1,10 @@
+[gd_resource type="Resource" script_class="MapRes" format=3 uid="uid://d2th3s0f8v00u"]
+
+[ext_resource type="Script" uid="uid://c82aav0t5d2mc" path="res://scripts/ResourceScripts/MapRes.cs" id="1_ximk7"]
+[ext_resource type="Texture2D" uid="uid://tcabnm1l2av0" path="res://resources/images/mapBG/desert.jpg" id="2_ss4ci"]
+
+[resource]
+script = ExtResource("1_ximk7")
+texture = ExtResource("2_ss4ci")
+levelCount = 10
+metadata/_custom_type_script = "uid://c82aav0t5d2mc"

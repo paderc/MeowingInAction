@@ -1,4 +1,21 @@
 [gd_scene format=3 uid="uid://cc3v5r0j1ro36"]
 
-[node name="Settings" type="Button" unique_id=474981209]
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="1_74wmf"]
+
+[node name="Settings" type="TextureButton" unique_id=1761960695]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
 size_flags_vertical = 3
+
+[node name="ResizableLabel" parent="." unique_id=1554987967 instance=ExtResource("1_74wmf")]
+layout_mode = 1
+text = "Settings"
+
+[node name="AutoResizeLabel" parent="ResizableLabel" index="0" unique_id=760233988]
+ParentOccupationFraction = 0.6
+
+[editable path="ResizableLabel"]

@@ -1,0 +1,111 @@
+[gd_scene format=3 uid="uid://cd0dksstuic47"]
+
+[ext_resource type="Script" uid="uid://di4abj1lx60u7" path="res://scripts/Card/CardGUI.cs" id="1_6hj0r"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_6u4wf"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_g2uj2"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_d81rb"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_up0cc"]
+
+[node name="Card" type="Control" unique_id=1110159579]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 300.0
+offset_bottom = 450.0
+mouse_filter = 1
+script = ExtResource("1_6hj0r")
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=715910199]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="MarginContainer" unique_id=763634700]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="BG" type="TextureRect" parent="MarginContainer/Control" unique_id=674126520]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_6u4wf")
+expand_mode = 1
+
+[node name="CostBG" type="TextureRect" parent="MarginContainer/Control" unique_id=710770828]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.05
+anchor_top = 0.05
+anchor_right = 0.1
+anchor_bottom = 0.1
+texture = SubResource("PlaceholderTexture2D_g2uj2")
+
+[node name="Cost" type="Label" parent="MarginContainer/Control/CostBG" unique_id=1968759733]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "0"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Icon" type="TextureRect" parent="MarginContainer/Control" unique_id=607628317]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.278
+anchor_top = 0.045
+anchor_right = 0.723
+anchor_bottom = 0.422
+texture = SubResource("PlaceholderTexture2D_d81rb")
+
+[node name="TitleBG" type="TextureRect" parent="MarginContainer/Control" unique_id=489208562]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.367
+anchor_top = 0.467
+anchor_right = 0.645
+anchor_bottom = 0.6
+texture = SubResource("PlaceholderTexture2D_up0cc")
+
+[node name="TitleLabel" type="Label" parent="MarginContainer/Control/TitleBG" unique_id=154036335]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gowno rzygi"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="DescBG" type="TextureRect" parent="MarginContainer/Control" unique_id=686983112]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.256
+anchor_top = 0.633
+anchor_right = 0.522
+anchor_bottom = 0.745
+texture = SubResource("PlaceholderTexture2D_up0cc")
+
+[node name="DescLabel" type="Label" parent="MarginContainer/Control/DescBG" unique_id=575745648]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Gowno rzygi"
+horizontal_alignment = 1
+vertical_alignment = 1

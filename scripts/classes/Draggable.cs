@@ -1,13 +1,15 @@
 using Godot;
 using System;
 
-public partial class Draggable : Node
+public partial class Draggable : Control
 {
 	[Signal]
 	public delegate void justPutDownEventHandler();
+	[Signal]
+	public delegate void justPickedUpEventHandler();
 	bool pickedUp;
 	bool canPickUp;
-	bool snapBack;
+	bool snapBack = true;
 	Vector2 dragOffset;
 	Vector2 originalPosition;
 	Control targetControl;
@@ -30,13 +32,14 @@ public partial class Draggable : Node
 		pickedUp = true;
         targetControl.Scale = 1.2f * Vector2.One;
 		dragOffset = targetControl.GetGlobalMousePosition() - targetControl.GlobalPosition;
+		EmitSignal(SignalName.justPickedUp);
 	}
 
 	void putDown()
 	{
 		pickedUp = false;
         targetControl.Scale = Vector2.One;
-		EmitSignal("justPutDown");
+		EmitSignal(SignalName.justPutDown);
 	}
 
 	void clampToParent()
@@ -67,7 +70,12 @@ public partial class Draggable : Node
 				if (mouseEvent.Pressed) {
 					if (canPickUp && !pickedUp) {
 						pickUp();
-					} else if (pickedUp) {
+					}
+				}
+				if (mouseEvent.IsReleased())
+				{
+					if (pickedUp)
+					{
 						putDown();
 					}
 				}
