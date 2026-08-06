@@ -1,0 +1,10 @@
+[gd_resource type="Theme" format=3 uid="uid://du5gkcs5dbbk8"]
+
+[ext_resource type="FontFile" uid="uid://c603triufxstu" path="res://resources/fonts/minster.ttf" id="1_qc210"]
+
+[resource]
+Button/colors/font_color = Color(0.3788412, 0.15615845, 0.9296875, 1)
+Button/colors/font_disabled_color = Color(0.4296875, 0.4296875, 0.4296875, 0.5019608)
+Button/colors/font_pressed_color = Color(0.25271726, 0.028289795, 0.8046875, 1)
+Button/font_sizes/font_size = 31
+Button/fonts/font = ExtResource("1_qc210")

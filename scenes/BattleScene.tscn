@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://dn7wkqkr8dju1"]
+
+[ext_resource type="Script" uid="uid://d0whbfkqp2n0s" path="res://scripts/Battle/Battle.cs" id="1_3mvhd"]
+[ext_resource type="PackedScene" uid="uid://dowp7jhhygsaq" path="res://scenes/BattleGridScene.tscn" id="1_ltshs"]
+[ext_resource type="Script" uid="uid://cfubq6v184pdh" path="res://scripts/Card/Hand.cs" id="2_gkmpl"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3mvhd"]
+
+[sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28s16"]
+
+[node name="BattleScene" type="Node3D" unique_id=1823190716]
+script = ExtResource("1_3mvhd")
+
+[node name="BattleGrid" parent="." unique_id=845623948 instance=ExtResource("1_ltshs")]
+
+[node name="HandLayer" type="CanvasLayer" parent="." unique_id=144802188]
+
+[node name="HandSpace" type="Control" parent="HandLayer" unique_id=1121328515]
+layout_mode = 3
+anchor_left = 0.2
+anchor_top = 0.8
+anchor_right = 0.8
+anchor_bottom = 0.98
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+mouse_filter = 2
+script = ExtResource("2_gkmpl")
+
+[node name="DrawPile" type="Control" parent="HandLayer" unique_id=1176702318]
+layout_mode = 3
+anchor_left = 0.05
+anchor_top = 0.8
+anchor_right = 0.15
+anchor_bottom = 0.98
+
+[node name="TextureRect" type="TextureRect" parent="HandLayer/DrawPile" unique_id=1045511402]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_3mvhd")
+
+[node name="DiscardPile" type="Control" parent="HandLayer" unique_id=393676678]
+layout_mode = 3
+anchor_left = 0.85
+anchor_top = 0.8
+anchor_right = 0.95
+anchor_bottom = 0.98
+
+[node name="TextureRect" type="TextureRect" parent="HandLayer/DiscardPile" unique_id=1287054914]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = SubResource("PlaceholderTexture2D_28s16")
+
+[node name="CardDropSpace" type="Control" parent="HandLayer" unique_id=801321331]
+layout_mode = 3
+anchors_preset = 0
+offset_left = 91.0
+offset_top = 63.0
+offset_right = 1834.0
+offset_bottom = 830.0
+mouse_filter = 2

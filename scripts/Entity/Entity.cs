@@ -1,10 +1,10 @@
 using Godot;
 using System;
 
-public partial class Entity : Node
+public abstract partial class Entity : Node
 {
 	Vector2I position;
-	Direction direction;
+	public Direction direction = Direction.UP;
 	public override void _Ready()
 	{
 	}
@@ -12,4 +12,5 @@ public partial class Entity : Node
 	public override void _Process(double delta)
 	{
 	}
+    public abstract void setupEntityGUI(EntityGUI entityGUI);
 }

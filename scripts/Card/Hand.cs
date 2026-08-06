@@ -3,28 +3,74 @@ using Godot.Collections;
 
 public partial class Hand : Control
 {
-	const float MAX_ROTATION = 0.2f;
+	[Signal]
+	public delegate void CardPlayedEventHandler(Card card);
+	const float MAX_ROTATION = 0.1f;
 	const float CARD_SPACING = -20;
 	const float CARD_ASPECT_RATIO = 2f / 3f;
 
 	Array<CardGUI> cards = new Array<CardGUI>();
 
+	bool canPlayCard = true;
+	public CardGUI currentHeld;
+
 	public override void _Ready()
 	{
+		Control cardDropSpace = GetNode<Control>("../CardDropSpace");
+		cardDropSpace.MouseEntered += () => canPlayCard = true;
+		cardDropSpace.MouseExited += () => canPlayCard = true;
+		
 		Resized += positionCards;
 		positionCards();
 	}
-
-	public void addToHand(CardGUI card)
+	public override void _Input(InputEvent @event)
 	{
-		AddChild(card);
-		cards.Add(card);
-		card.PropagateMaximumSize = true;
-		card.draggable.justPickedUp += positionCards;
-		card.draggable.justPutDown += positionCards;
+		if (@event is InputEventKey keyEvent)
+		{
+			if (keyEvent.Keycode == Key.A)
+			{
+				positionCards();
+			}
+		}
+	}
+	public void forceHeldDown()
+	{
+		if (currentHeld != null)
+		{
+			canPlayCard = false;
+			currentHeld.draggable.silentPutDown();
+		}
+	}
+	public void addToHand(CardGUI cardGUI)
+	{
+		AddChild(cardGUI);
+		cards.Add(cardGUI);
+		cardGUI.draggable.justPickedUp += () =>
+		{
+			currentHeld = cardGUI;
+			cardGUI.makeTransparent();
+			cards.Remove(cardGUI);
+			positionCards();
+		};
+		cardGUI.draggable.justPutDown += () =>
+		{
+			if (canPlayCard)
+			{
+				playCard(cardGUI.card);
+				return;
+			}
+			currentHeld = null;
+			cardGUI.restoreTransparency();
+			cards.Add(cardGUI);
+			positionCards();
+		};
 		CallDeferred(nameof(positionCards));
 	}
-
+	void playCard(Card card)
+	{
+		EmitSignalCardPlayed(card);
+		currentHeld = null;
+	}
 	public void removeFromHand(CardGUI card)
 	{
 		cards.Remove(card);
@@ -45,13 +91,8 @@ public partial class Hand : Control
 		float cardWidth = cardHeight * CARD_ASPECT_RATIO;
 
 		float naturalTotalWidth = cardCount * cardWidth + (cardCount - 1) * CARD_SPACING;
-		float spacing = CARD_SPACING;
-		if (naturalTotalWidth > handWidth && cardCount > 1)
-		{
-			spacing = (handWidth - cardCount * cardWidth) / (cardCount - 1);
-		}
 
-		float totalWidth = cardCount * cardWidth + (cardCount - 1) * spacing;
+		float totalWidth = cardCount * cardWidth + (cardCount - 1) * CARD_SPACING;
 		float startX = handWidth / 2 - totalWidth / 2;
 
 		for (int i = 0; i < cardCount; i++)
@@ -62,11 +103,13 @@ public partial class Hand : Control
 			card.Size = new Vector2(cardWidth, cardHeight);
 
 			float t = cardCount == 1 ? 0f : (float)i / (cardCount - 1) * 2.0f - 1.0f;
-			float xPos = startX + i * (cardWidth + spacing);
+			float xPos = startX + i * (cardWidth + CARD_SPACING);
 
 			card.PivotOffset = card.Size / 2f;
 			card.Position = new Vector2(xPos, 0);
 			card.Rotation = t * MAX_ROTATION;
+
+			card.ZIndex = i;
 		}
 	}
 }

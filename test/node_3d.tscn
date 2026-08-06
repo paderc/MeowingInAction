@@ -1,0 +1,10 @@
+[gd_scene format=3 uid="uid://d2hhkduvitv5u"]
+
+[ext_resource type="PackedScene" uid="uid://byru2p7infijh" path="res://scenes/EntityGUI.tscn" id="1_nd1li"]
+
+[node name="Node3D" type="Node3D" unique_id=1584743219]
+
+[node name="EntityGUI" parent="." unique_id=508371770 instance=ExtResource("1_nd1li")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=2043668014]
+transform = Transform3D(0.26723835, 0, 0.96363044, 0, 1, 0, -0.96363044, 0, 0.26723835, 2.795, 0, 0)

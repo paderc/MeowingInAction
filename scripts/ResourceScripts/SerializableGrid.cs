@@ -13,19 +13,24 @@ public partial class SerializableGrid : Resource
 	[Export]
 	public string name;
 	[Export]
-	public Array<SerializableBlock> grid = new Array<SerializableBlock>();
-	public SerializableGrid(string name, Battle battle)
+	public Array<Array<SerializableBlock>> grid = new Array<Array<SerializableBlock>>();
+	public SerializableGrid(string name, BattleGrid battleGrid)
 	{
 		this.name = name;
 
-		foreach (GridBlock block in battle.blocks)
+		foreach (Array<GridBlock> gridRow in battleGrid.blocks)
 		{
-			SerializableBlock sBlock = new SerializableBlock();
-			sizeX = battle.gridSize.X;
-			sizeY = battle.gridSize.Y;
-			sBlock.type = block.type;
-			sBlock.position = block.gridPosition;
-			this.grid.Add(sBlock);
+			Array<SerializableBlock> row = new Array<SerializableBlock>();
+			grid.Add(row);
+			foreach (GridBlock block in gridRow)
+			{
+				SerializableBlock sBlock = new SerializableBlock();
+				sizeX = battleGrid.gridSize.X;
+				sizeY = battleGrid.gridSize.Y;
+				sBlock.type = block.type;
+				sBlock.position = block.gridPosition;
+				row.Add(sBlock);
+			}
 		}
 	}
 	public SerializableGrid(){}

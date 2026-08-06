@@ -7,7 +7,7 @@ public partial class InGameMenu : Control
 
 	public InGameMenuButtonHandler buttonHandler;
 	[Signal]
-	public delegate void MenuChangedEventHandler(bool focus);
+	public delegate void MenuOpenedEventHandler(bool focus);
 	bool escapeReleased = true;
 
 	public override void _Ready()
@@ -44,6 +44,6 @@ public partial class InGameMenu : Control
         if (!escapeReleased) return;
         escapeReleased = false;
         this.Visible = !this.Visible;
-        EmitSignal(SignalName.MenuChanged, this.Visible);
+        EmitSignal(SignalName.MenuOpened, this.Visible);
     }	
 }

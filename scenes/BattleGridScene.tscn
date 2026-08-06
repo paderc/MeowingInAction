@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://dowp7jhhygsaq"]
+
+[ext_resource type="Script" uid="uid://ccrgohaqd35wu" path="res://scripts/Battle/OrbitCameraRig.cs" id="1_c10r7"]
+
+[node name="BattleGrid" type="Node3D" unique_id=845623948]
+
+[node name="GridSpace" type="Node3D" parent="." unique_id=1410942780]
+
+[node name="OrbitCameraRig" type="Node3D" parent="." unique_id=850720233]
+script = ExtResource("1_c10r7")
+minZoom = 5.0
+maxZoom = 15.0
+
+[node name="Pitch" type="Node3D" parent="OrbitCameraRig" unique_id=765402050]
+
+[node name="Camera3D" type="Camera3D" parent="OrbitCameraRig/Pitch" unique_id=163325937]
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." unique_id=1429648430]

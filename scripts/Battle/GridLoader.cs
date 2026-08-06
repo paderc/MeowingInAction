@@ -4,7 +4,7 @@ using System.Linq;
 
 public static class GridLoader
 {
-	public static Battle getForStage(Stage stage)
+	public static BattleGrid getForStage(Stage stage)
 	{
 		RandomNumberGenerator generator = new RandomNumberGenerator();
 		string basePath = Paths.GridSavePath + "/" + stage.ToString();
@@ -14,16 +14,6 @@ public static class GridLoader
 		string fileName = files[index];
 		string fullPath = basePath + "/" + fileName;
 		SerializableGrid sGrid = ResourceLoader.Load<SerializableGrid>(fullPath);
-		return new Battle(sGrid);
-	}
-	public static void loadOnto(Stage stage, Battle battleContainer, Node3D battleSpace)
-	{
-		if (battleContainer != null)
-		{
-			battleContainer.QueueFree();
-			battleContainer = null;
-		}
-		battleContainer = getForStage(stage);
-		battleSpace.AddChild(battleSpace);
+		return new BattleGrid(sGrid);
 	}
 }

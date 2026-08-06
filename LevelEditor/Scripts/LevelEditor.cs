@@ -11,7 +11,7 @@ public partial class LevelEditor : Control
 	Button Save;
 
 	//Battle
-	Battle battle;
+	BattleGrid battleGrid;
 	Node battleNode;
 
 	//Map parameters
@@ -80,9 +80,9 @@ public partial class LevelEditor : Control
 			battleNode.Free();
 			battleNode = null;
 		}
-		battle = new Battle(sGrid);
-		BattleLoader battleLoader = new BattleLoader(battle);
-		battleNode = battleLoader.getBattleNode();
+		battleGrid = new BattleGrid(sGrid);
+		battleNode = battleGrid.getBattleGridNode();
+		AddChild(battleNode);
 	}
 
 	public void loadGrids()
@@ -124,7 +124,7 @@ public partial class LevelEditor : Control
 
 		Directory.CreateDirectory(osDirPath);
 
-		SerializableGrid serializableGrid = new SerializableGrid(MapName.Text, battle);
+		SerializableGrid serializableGrid = new SerializableGrid(MapName.Text, battleGrid);
 		string filePath = godotDirPath + "/" + serializableGrid.name + ".res";
 		ResourceSaver.Save(serializableGrid, filePath);
 		loadGrids();
@@ -159,28 +159,28 @@ public partial class LevelEditor : Control
 			battleNode.Free();
 			battleNode = null;
 		}
-		battle = new Battle(x, y);
-		BattleLoader battleLoader = new BattleLoader(battle);
-		battleNode = battleLoader.getBattleNode();
+		battleGrid = new BattleGrid(x, y);
+		battleNode = battleGrid.getBattleGridNode();
+		AddChild(battleNode);
 	}
 
 	private void changeCurrentBlock()
 	{
-		battle.currentHovered.setType(currentPaint);
+		battleGrid.currentHovered.setType(currentPaint);
 	}
 
 	bool paintedThisPress = false;
 
 	public override void _Input(InputEvent @event)
 	{
-		if (battle == null) return;
+		if (battleGrid == null) return;
 
 		if (@event is InputEventMouseButton mb && mb.ButtonIndex == MouseButton.Left)
 		{
 			if (mb.Pressed)
 			{
 				paintedThisPress = false;
-				if (battle.currentHovered != null)
+				if (battleGrid.currentHovered != null)
 				{
 					changeCurrentBlock();
 					paintedThisPress = true;
@@ -189,7 +189,7 @@ public partial class LevelEditor : Control
 		}
 		else if (@event is InputEventMouseMotion && Input.IsMouseButtonPressed(MouseButton.Left))
 		{
-			if (battle.currentHovered != null) changeCurrentBlock();
+			if (battleGrid.currentHovered != null) changeCurrentBlock();
 		}
 	}
 }

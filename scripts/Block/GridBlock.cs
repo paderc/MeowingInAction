@@ -8,6 +8,7 @@ public partial class GridBlock : StaticBody3D
 	public MeshInstance3D meshInstance;
 	public GridType type;
 	public static Dictionary<GridType, BlockImage> typeToImageDict;
+	Label3D label;
 
 	StandardMaterial3D material;
 	float blockSize;
@@ -17,10 +18,19 @@ public partial class GridBlock : StaticBody3D
 
 	public override void _Ready()
 	{
-        base._Ready();
+		base._Ready();
 		this.Name = "GridBlock" + gridPosition.ToString();
 		meshInstance.Name = "Mesh";
-	}
+
+		Ally ally = new Ally();
+		addEntity(ally);
+        addEntityGUI(EntityGUI.getEntityGUI(ally));
+
+        Enemy enemy = new Enemy();
+		addEntity(enemy);
+        addEntityGUI(EntityGUI.getEntityGUI(enemy));
+
+    }
 
 	public GridBlock(GridType type, float blockSize)
 	{
@@ -48,6 +58,22 @@ public partial class GridBlock : StaticBody3D
 
 		InputRayPickable = true;
 	}
+	public void addEntity(Entity entity)
+	{
+		if (entity.GetType() == typeof(Ally)) allies.Add((Ally)entity);
+        if (entity.GetType() == typeof(Enemy)) enemies.Add((Enemy)entity);
+        refreshLabel();
+	}
+
+	public void addEntityGUI(EntityGUI entityGUI)
+	{
+		float xPosition = 0;
+		if (entityGUI.entity.GetType() == typeof(Ally)) xPosition = -blockSize / 4;
+		else if (entityGUI.entity.GetType() == typeof(Enemy)) xPosition = blockSize / 4;
+        entityGUI.Position = new Vector3(xPosition, 0.5f, 0);
+		refreshLabel();
+        AddChild(entityGUI);
+	}
 
 	protected void setupMesh()
 	{
@@ -67,19 +93,18 @@ public partial class GridBlock : StaticBody3D
 	protected void setupCollision()
 	{
 		BoxShape3D box = new BoxShape3D();
-		box.Size = new Vector3(blockSize, 0.05f, blockSize);
+		box.Size = new Vector3(blockSize, 0, blockSize);
 
 		CollisionShape3D collision = new CollisionShape3D();
 		collision.Shape = box;
 		collision.Name = "Collision";
-		collision.Position = new Vector3(0, -0.025f, 0);
+		collision.Position = new Vector3(0, 0.05f, 0);
 		AddChild(collision);
 	}
 
 	private void setupLabel(float blockSize)
 	{
-		Label3D label = new Label3D();
-		label.Text = ($"{allies.Count} , {enemies.Count}");
+		label = new Label3D();
 		label.PixelSize = 0.01f;
 		label.FontSize = (int)(0.3 * blockSize * 100);
 		label.Billboard = BaseMaterial3D.BillboardModeEnum.Disabled;
@@ -87,10 +112,13 @@ public partial class GridBlock : StaticBody3D
 		label.Position = new Vector3(0, 0.01f, 0);
 		label.HorizontalAlignment = HorizontalAlignment.Center;
 		label.VerticalAlignment = VerticalAlignment.Center;
-		label.NoDepthTest = true;
 		this.AddChild(label);
 	}
 
+	void refreshLabel()
+	{
+		label.Text = ($"{allies.Count}, {enemies.Count}");
+	}
 	public static void findTexturePaths()
 	{
 		typeToImageDict = new Dictionary<GridType, BlockImage>();

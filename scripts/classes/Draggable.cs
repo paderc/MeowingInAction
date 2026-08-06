@@ -1,7 +1,7 @@
 using Godot;
 using System;
 
-public partial class Draggable : Control
+public partial class Draggable : Node
 {
 	[Signal]
 	public delegate void justPutDownEventHandler();
@@ -27,15 +27,19 @@ public partial class Draggable : Control
 		originalPosition = targetControl.GlobalPosition;
 	}
 
-	void pickUp()
+	public void pickUp()
 	{
 		pickedUp = true;
         targetControl.Scale = 1.2f * Vector2.One;
 		dragOffset = targetControl.GetGlobalMousePosition() - targetControl.GlobalPosition;
 		EmitSignal(SignalName.justPickedUp);
 	}
-
-	void putDown()
+	public void silentPutDown()
+	{
+        pickedUp = false;
+        targetControl.Scale = Vector2.One;
+    }
+    public void putDown()
 	{
 		pickedUp = false;
         targetControl.Scale = Vector2.One;

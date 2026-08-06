@@ -1,10 +1,18 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://4hurp24xtcin"]
 
+[ext_resource type="Script" uid="uid://bndy5ixb2b8jy" path="res://scripts/Actions/Action.cs" id="1_lb14d"]
 [ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="1_np0tm"]
+[ext_resource type="Script" uid="uid://bqrjqwn0re00a" path="res://scripts/Actions/SpawnAction.cs" id="1_s1yvi"]
 
-[sub_resource type="CSharpScript" id="CSharpScript_np0tm"]
+[sub_resource type="Resource" id="Resource_4kx0d"]
+script = ExtResource("1_s1yvi")
+value = 1
+metadata/_custom_type_script = "uid://bqrjqwn0re00a"
 
 [resource]
 script = ExtResource("1_np0tm")
-cost = 1
+name = "For chuj"
+description = "Wali loda"
+actionList = Array[ExtResource("1_lb14d")]([SubResource("Resource_4kx0d")])
+cost = 2
 metadata/_custom_type_script = "uid://erb7rg5r517k"

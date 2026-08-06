@@ -12,7 +12,7 @@ public partial class Game : Node
 	Map map;
 
 	Node3D battleNode;
-    Battle battle;
+	Battle battle;
 	Run run;
 
 	public override void _Ready()
@@ -72,9 +72,12 @@ public partial class Game : Node
 	}
 	void startBattle()
 	{
-		BattleLoader battleLoader = new BattleLoader(map.stage, run);
-		battleNode = battleLoader.getBattleNode();
-		battle = battleLoader.getBattle();
+		battle = new Battle(BattleGrid.getBattleGrid(run.currentStage));
+		battleNode = battle.getBattleNode(run.deck);
+		
+		Hand hand = battleNode.GetNode<Hand>("HandLayer/HandSpace");
+		inGameMenu.MenuOpened += (focus) => hand.forceHeldDown();
+		
 		mainLayerHandler.switchCurrent(battleNode);
 	}
 	void leaveGame()

@@ -1,0 +1,21 @@
+[gd_scene format=3 uid="uid://byru2p7infijh"]
+
+[ext_resource type="Script" uid="uid://dls5tcf0cmpmu" path="res://scripts/Entity/EntityGUI.cs" id="1_d4mem"]
+
+[sub_resource type="PrismMesh" id="PrismMesh_7visa"]
+size = Vector3(0.675, 0.95, 0.72)
+
+[sub_resource type="BoxMesh" id="BoxMesh_tx8of"]
+size = Vector3(0.5, 0.5, 1)
+
+[node name="EntityGUI" type="Node3D" unique_id=508371770]
+transform = Transform3D(0.3, 0, 0, 0, 0.3, 0, 0, 0, 0.3, 0, 0, 0)
+script = ExtResource("1_d4mem")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=2040144419]
+transform = Transform3D(1.1924881e-08, 1, 0, 4.371139e-08, -5.2125306e-16, -1, -1, 1.1924881e-08, -4.371139e-08, 0, 0, 0)
+mesh = SubResource("PrismMesh_7visa")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="." unique_id=1111797758]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -0.7, 0, 0)
+mesh = SubResource("BoxMesh_tx8of")
