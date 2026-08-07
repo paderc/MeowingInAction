@@ -32,10 +32,25 @@ public partial class Battle : Node3D
 		battle.AddChild(cardActionHandler);
 
 		hand = battle.GetNode<Hand>("HandLayer/HandSpace");
+		
+
 		foreach (Card card in deck.baseCards)
 		{
 			hand.addToHand(CardGUI.GetCardGUI(card));
 		}
 		return battle;
+	}
+
+	void setupHand()
+	{
+		hand.CardPickedUp += (card) =>
+		{
+			battleGrid.changeHoverArea(card.area);
+		};
+		hand.CardPutDown += (card) =>
+		{
+			battleGrid.resetHoverArea();
+		};
+
 	}
 }

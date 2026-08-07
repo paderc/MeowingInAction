@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 
 public partial class BattleGrid : Node3D
@@ -10,10 +11,11 @@ public partial class BattleGrid : Node3D
 
 	float blockSize = 2.0f;
 
-
+	public HashSet<Vector2I> hoverSet = new HashSet<Vector2I>();
 	public GridBlock currentHovered;
+	public Array<GridBlock> hoverExtra = new Array<GridBlock>();
+	
 	Node3D gridContainer = new Node3D();
-
 
 	public Vector2I gridSize;
 	public Array<Array<GridBlock>> blocks = new Array<Array<GridBlock>>();
@@ -94,8 +96,8 @@ public partial class BattleGrid : Node3D
 	{
 		for (int x = 0; x < gridSize.X; x++)
 		{
-			Array<GridBlock> row = new Array<GridBlock>();
-			blocks.Add(row);
+			Array<GridBlock> column = new Array<GridBlock>();
+			blocks.Add(column);
 			for (int y = 0; y < gridSize.Y; y++)
 			{
 				GridBlock block = new GridBlock(
@@ -104,7 +106,7 @@ public partial class BattleGrid : Node3D
 					blockSize
 					);
 
-				row.Add(block);
+				column.Add(block);
 
 				block.Position = new Vector3(
 					blockSize * x,
@@ -129,6 +131,18 @@ public partial class BattleGrid : Node3D
 
 	public void onBlockHovered(GridBlock block)
 	{
+		foreach (Vector2I vector in hoverSet)
+		{
+			foreach (Array<GridBlock> row in blocks)
+			{
+				IEnumerable<GridBlock> hoverBlocks = row.Where(gridBlock => gridBlock.gridPosition == block.gridPosition + vector);
+				foreach (GridBlock gridBlock in hoverBlocks)
+				{
+					hoverExtra.Add(gridBlock);
+					gridBlock.setHovered(true);
+				}
+			}
+		}
 		currentHovered = block;
 		block.setHovered(true);
 	}
@@ -136,6 +150,10 @@ public partial class BattleGrid : Node3D
 	public void onBlockUnhovered(GridBlock block)
 	{
 		if (currentHovered == block) currentHovered = null;
+		foreach(GridBlock gridBlock in hoverExtra)
+		{
+			gridBlock.setHovered(false);
+		}
 		block.setHovered(false);
 	}
 	public Node3D getBattleGridNode()
@@ -151,5 +169,18 @@ public partial class BattleGrid : Node3D
 		BattleGrid battleGrid = GridLoader.getForStage(stage);
 		if (battleGrid == null) { GD.PushError("Battle grid is null, also returning null"); return null; }
 		return battleGrid;
+	}
+	public void changeHoverArea(Area area)
+	{
+		hoverSet = new HashSet<Vector2I>();
+
+		foreach (Vector2I vector in area.posRelative)
+		{
+			hoverSet.Add(vector);
+		}
+	}
+	public void resetHoverArea()
+	{
+		hoverSet = null;
 	}
 }

@@ -6,6 +6,7 @@ public partial class CardActionHandler : Node
 	public Battle battle;
 	public GridBlock currentHovered;
 
+
 	public override void _Ready()
 	{
 		battle = GetParent<Battle>();
@@ -14,7 +15,13 @@ public partial class CardActionHandler : Node
 
 	void connectSignals()
 	{
-		battle.battleGrid.HoverUpdated += (block) => currentHovered = block;
-		battle.hand.CardPlayed += (card) => card.doActions(this);
+		battle.battleGrid.HoverUpdated += (block) =>
+		{  
+			currentHovered = block; 
+		};
+		battle.hand.CardPlayed += (card) =>
+		{
+			card.doActions(this);
+		};
 	}
 }

@@ -1,18 +1,37 @@
 [gd_resource type="Resource" script_class="Card" format=3 uid="uid://4hurp24xtcin"]
 
-[ext_resource type="Script" uid="uid://bndy5ixb2b8jy" path="res://scripts/Actions/Action.cs" id="1_lb14d"]
-[ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="1_np0tm"]
-[ext_resource type="Script" uid="uid://bqrjqwn0re00a" path="res://scripts/Actions/SpawnAction.cs" id="1_s1yvi"]
+[ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="1_fmu4x"]
+[ext_resource type="Script" uid="uid://bpt0vlinccxe0" path="res://scripts/Entity/Ally.cs" id="1_jh0d7"]
+[ext_resource type="Script" uid="uid://cc1o6tj0cyyem" path="res://scripts/Actions/SpawnEntry.cs" id="2_actdr"]
+[ext_resource type="Script" uid="uid://bqrjqwn0re00a" path="res://scripts/Actions/SpawnAction.cs" id="3_pmmvx"]
+[ext_resource type="Script" uid="uid://dyg5i4vd3f462" path="res://scripts/Actions/Areas/RectArea.cs" id="4_actdr"]
 
-[sub_resource type="Resource" id="Resource_4kx0d"]
-script = ExtResource("1_s1yvi")
-value = 1
+[sub_resource type="Resource" id="Resource_pxgaw"]
+script = ExtResource("1_jh0d7")
+metadata/_custom_type_script = "uid://bpt0vlinccxe0"
+
+[sub_resource type="Resource" id="Resource_h0e28"]
+script = ExtResource("2_actdr")
+entity = SubResource("Resource_pxgaw")
+amount = 2
+metadata/_custom_type_script = "uid://cc1o6tj0cyyem"
+
+[sub_resource type="Resource" id="Resource_pmmvx"]
+script = ExtResource("3_pmmvx")
+entries = Array[Object]([SubResource("Resource_h0e28")])
 metadata/_custom_type_script = "uid://bqrjqwn0re00a"
 
+[sub_resource type="Resource" id="Resource_v27t7"]
+script = ExtResource("4_actdr")
+rectSize = Vector2i(3, 3)
+posRelative = null
+metadata/_custom_type_script = "uid://dyg5i4vd3f462"
+
 [resource]
-script = ExtResource("1_np0tm")
+script = ExtResource("1_fmu4x")
 name = "For chuj"
-description = "Wali loda"
-actionList = Array[ExtResource("1_lb14d")]([SubResource("Resource_4kx0d")])
-cost = 2
+description = "Ble ble"
+actionList = Array[Object]([SubResource("Resource_pmmvx")])
+cost = 1
+area = SubResource("Resource_v27t7")
 metadata/_custom_type_script = "uid://erb7rg5r517k"

@@ -5,6 +5,10 @@ public partial class Hand : Control
 {
 	[Signal]
 	public delegate void CardPlayedEventHandler(Card card);
+	[Signal]
+	public delegate void CardPickedUpEventHandler(Card card);
+	[Signal]
+	public delegate void CardPutDownEventHandler(Card card);
 	const float MAX_ROTATION = 0.1f;
 	const float CARD_SPACING = -20;
 	const float CARD_ASPECT_RATIO = 2f / 3f;
@@ -51,6 +55,7 @@ public partial class Hand : Control
 			cardGUI.makeTransparent();
 			cards.Remove(cardGUI);
 			positionCards();
+			EmitSignalCardPickedUp(cardGUI.card);
 		};
 		cardGUI.draggable.justPutDown += () =>
 		{
@@ -63,6 +68,7 @@ public partial class Hand : Control
 			cardGUI.restoreTransparency();
 			cards.Add(cardGUI);
 			positionCards();
+			EmitSignalCardPutDown(cardGUI.card);
 		};
 		CallDeferred(nameof(positionCards));
 	}

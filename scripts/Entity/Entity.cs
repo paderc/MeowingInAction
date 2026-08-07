@@ -1,16 +1,12 @@
 using Godot;
 using System;
 
-public abstract partial class Entity : Node
+[GlobalClass]
+public abstract partial class Entity : Resource
 {
+	[Export]
 	Vector2I position;
+	[Export]
 	public Direction direction = Direction.UP;
-	public override void _Ready()
-	{
-	}
-
-	public override void _Process(double delta)
-	{
-	}
     public abstract void setupEntityGUI(EntityGUI entityGUI);
 }

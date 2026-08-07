@@ -13,10 +13,11 @@ public partial class Card : Resource
 	public Array<Action> actionList;
 	[Export]
 	public int cost;
+    [Export]
+    public Area area;
 
-	public void doActions(CardActionHandler cardActionHandler)
+    public void doActions(CardActionHandler cardActionHandler)
 	{
-		GD.Print("Doing actions");
 		foreach (Action action in actionList)
 		{
 			action.perform(cardActionHandler);
