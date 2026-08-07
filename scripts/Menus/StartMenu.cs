@@ -12,10 +12,19 @@ public partial class StartMenu : Control
 	public override void _Ready()
 	{
 		TextureButton playButton = GetNode<TextureButton>("ButtonArray/Play");
-		playButton.Pressed += () => EmitSignal(SignalName.Start);
+		if (playButton == null)
+		{
+			return;
+		}
+		playButton.Pressed += () => {
+			EmitSignalStart();
+		};
 
 		TextureButton exitToDesktopButton = GetNode<TextureButton>("ButtonArray/Exit");
-		exitToDesktopButton.Pressed += () => EmitSignal(SignalName.Exit);
+		exitToDesktopButton.Pressed += () =>
+		{
+			EmitSignal(SignalName.Exit);
+		};
 	}
 
 	public static StartMenu create()

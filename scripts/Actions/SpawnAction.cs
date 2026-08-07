@@ -13,7 +13,10 @@ public partial class SpawnAction : Action
 			{
 			for (int i = 0; i < entry.amount; i++)
 			{
-				handler.currentHovered.addEntity(entry.entity);
+				foreach (GridBlock block in handler.hovered)
+				{
+                    block.addEntity(entry.entity);
+                }
 			}
 		}
 	}

@@ -5,13 +5,12 @@ using System;
 [GlobalClass]
 public partial class Deck : Resource
 {
-	static string baseDeckPath = "res://resources/baseDecks/BaseDeck.tres";
 	[Export]
 	public Array<Card> baseCards;
 	
 	public static Deck LoadBaseDeck()
 	{
-		const string path = "res://resources/baseDecks/BaseDeck.tres";
-		return GD.Load<Deck>(path);
+        GD.Print("File exists: " + Godot.FileAccess.FileExists(Paths.baseDeckPath));
+        return GD.Load<Deck>(Paths.baseDeckPath);
 	}
 }

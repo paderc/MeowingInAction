@@ -8,7 +8,6 @@ public partial class Battle : Node3D
 	public Hand hand;
 	Battle()
 	{
-		this.battleGrid = BattleGrid.getBattleGrid(Stage.DESERT);
 	}
 	public Battle(BattleGrid battleGrid)
 	{
@@ -32,7 +31,7 @@ public partial class Battle : Node3D
 		battle.AddChild(cardActionHandler);
 
 		hand = battle.GetNode<Hand>("HandLayer/HandSpace");
-		
+		setupHand();
 
 		foreach (Card card in deck.baseCards)
 		{

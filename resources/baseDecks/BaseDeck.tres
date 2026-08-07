@@ -2,8 +2,41 @@
 
 [ext_resource type="Resource" uid="uid://4hurp24xtcin" path="res://resources/cards/forTheMocracy.tres" id="1_4bqck"]
 [ext_resource type="Script" uid="uid://cna2icxc0o3ab" path="res://scripts/Card/Deck.cs" id="1_cd36h"]
+[ext_resource type="Script" uid="uid://bpt0vlinccxe0" path="res://scripts/Entity/Ally.cs" id="2_iufj8"]
+[ext_resource type="Script" uid="uid://cc1o6tj0cyyem" path="res://scripts/Actions/SpawnEntry.cs" id="3_put30"]
+[ext_resource type="Script" uid="uid://bqrjqwn0re00a" path="res://scripts/Actions/SpawnAction.cs" id="4_w6uml"]
+[ext_resource type="Script" uid="uid://dyg5i4vd3f462" path="res://scripts/Actions/Areas/RectArea.cs" id="5_2sh3i"]
+[ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="6_mx27n"]
+
+[sub_resource type="Resource" id="Resource_73n3o"]
+script = ExtResource("2_iufj8")
+metadata/_custom_type_script = "uid://bpt0vlinccxe0"
+
+[sub_resource type="Resource" id="Resource_q8pyo"]
+script = ExtResource("3_put30")
+entity = SubResource("Resource_73n3o")
+amount = 1
+metadata/_custom_type_script = "uid://cc1o6tj0cyyem"
+
+[sub_resource type="Resource" id="Resource_p77eh"]
+script = ExtResource("4_w6uml")
+entries = Array[Object]([SubResource("Resource_q8pyo")])
+metadata/_custom_type_script = "uid://bqrjqwn0re00a"
+
+[sub_resource type="Resource" id="Resource_58wjc"]
+script = ExtResource("5_2sh3i")
+rectSize = Vector2i(2, 2)
+metadata/_custom_type_script = "uid://dyg5i4vd3f462"
+
+[sub_resource type="Resource" id="Resource_2d8j7"]
+script = ExtResource("6_mx27n")
+name = "gowno"
+description = "sra"
+actionList = Array[Object]([SubResource("Resource_p77eh")])
+area = SubResource("Resource_58wjc")
+metadata/_custom_type_script = "uid://erb7rg5r517k"
 
 [resource]
 script = ExtResource("1_cd36h")
-baseCards = Array[Object]([ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck"), ExtResource("1_4bqck")])
+baseCards = Array[Object]([ExtResource("1_4bqck"), ExtResource("1_4bqck"), SubResource("Resource_2d8j7")])
 metadata/_custom_type_script = "uid://cna2icxc0o3ab"

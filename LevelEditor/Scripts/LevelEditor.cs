@@ -166,7 +166,7 @@ public partial class LevelEditor : Control
 
 	private void changeCurrentBlock()
 	{
-		battleGrid.currentHovered.setType(currentPaint);
+		battleGrid.middleHovered.setType(currentPaint);
 	}
 
 	bool paintedThisPress = false;
@@ -180,7 +180,7 @@ public partial class LevelEditor : Control
 			if (mb.Pressed)
 			{
 				paintedThisPress = false;
-				if (battleGrid.currentHovered != null)
+				if (battleGrid.middleHovered != null)
 				{
 					changeCurrentBlock();
 					paintedThisPress = true;
@@ -189,7 +189,7 @@ public partial class LevelEditor : Control
 		}
 		else if (@event is InputEventMouseMotion && Input.IsMouseButtonPressed(MouseButton.Left))
 		{
-			if (battleGrid.currentHovered != null) changeCurrentBlock();
+			if (battleGrid.middleHovered != null) changeCurrentBlock();
 		}
 	}
 }

@@ -5,13 +5,15 @@ using System;
 [GlobalClass]
 public partial class RectArea : Area
 {
+	private Vector2I _rectSize;
+
 	[Export]
-	Vector2I rectSize
+	public Vector2I rectSize
 	{
-		get => rectSize;
+		get => _rectSize;
 		set
 		{
-			rectSize = value;
+			_rectSize = value;
 			GeneratePosRelative();
 		}
 	}

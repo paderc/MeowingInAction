@@ -21,10 +21,9 @@ script = ExtResource("3_pmmvx")
 entries = Array[Object]([SubResource("Resource_h0e28")])
 metadata/_custom_type_script = "uid://bqrjqwn0re00a"
 
-[sub_resource type="Resource" id="Resource_v27t7"]
+[sub_resource type="Resource" id="Resource_2d8j7"]
 script = ExtResource("4_actdr")
 rectSize = Vector2i(3, 3)
-posRelative = null
 metadata/_custom_type_script = "uid://dyg5i4vd3f462"
 
 [resource]
@@ -33,5 +32,5 @@ name = "For chuj"
 description = "Ble ble"
 actionList = Array[Object]([SubResource("Resource_pmmvx")])
 cost = 1
-area = SubResource("Resource_v27t7")
+area = SubResource("Resource_2d8j7")
 metadata/_custom_type_script = "uid://erb7rg5r517k"

@@ -4,8 +4,6 @@ using Godot.Collections;
 public partial class Hand : Control
 {
 	[Signal]
-	public delegate void CardPlayedEventHandler(Card card);
-	[Signal]
 	public delegate void CardPickedUpEventHandler(Card card);
 	[Signal]
 	public delegate void CardPutDownEventHandler(Card card);
@@ -15,14 +13,11 @@ public partial class Hand : Control
 
 	Array<CardGUI> cards = new Array<CardGUI>();
 
-	bool canPlayCard = true;
 	public CardGUI currentHeld;
 
 	public override void _Ready()
 	{
 		Control cardDropSpace = GetNode<Control>("../CardDropSpace");
-		cardDropSpace.MouseEntered += () => canPlayCard = true;
-		cardDropSpace.MouseExited += () => canPlayCard = true;
 		
 		Resized += positionCards;
 		positionCards();
@@ -41,7 +36,6 @@ public partial class Hand : Control
 	{
 		if (currentHeld != null)
 		{
-			canPlayCard = false;
 			currentHeld.draggable.silentPutDown();
 		}
 	}
@@ -59,11 +53,6 @@ public partial class Hand : Control
 		};
 		cardGUI.draggable.justPutDown += () =>
 		{
-			if (canPlayCard)
-			{
-				playCard(cardGUI.card);
-				return;
-			}
 			currentHeld = null;
 			cardGUI.restoreTransparency();
 			cards.Add(cardGUI);
@@ -71,11 +60,6 @@ public partial class Hand : Control
 			EmitSignalCardPutDown(cardGUI.card);
 		};
 		CallDeferred(nameof(positionCards));
-	}
-	void playCard(Card card)
-	{
-		EmitSignalCardPlayed(card);
-		currentHeld = null;
 	}
 	public void removeFromHand(CardGUI card)
 	{

@@ -7,6 +7,6 @@ using System.ComponentModel;
 public partial class Area : Resource
 {
     [Export]
-    public Array<Vector2I> posRelative;
+    public Array<Vector2I> posRelative = new Array<Vector2I>();
 
 }

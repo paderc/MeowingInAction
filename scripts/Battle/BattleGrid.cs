@@ -7,13 +7,13 @@ using System.Linq;
 public partial class BattleGrid : Node3D
 {
 	[Signal]
-	public delegate void HoverUpdatedEventHandler(GridBlock block);
+	public delegate void HoverUpdatedEventHandler(Array<GridBlock> block);
 
 	float blockSize = 2.0f;
 
 	public HashSet<Vector2I> hoverSet = new HashSet<Vector2I>();
-	public GridBlock currentHovered;
-	public Array<GridBlock> hoverExtra = new Array<GridBlock>();
+	public GridBlock middleHovered;
+	public Array<GridBlock> allHovered = new Array<GridBlock>();
 	
 	Node3D gridContainer = new Node3D();
 
@@ -117,7 +117,7 @@ public partial class BattleGrid : Node3D
 				block.MouseEntered += () => 
 				{
 					onBlockHovered(block);
-					EmitSignal(SignalName.HoverUpdated, block);
+					
 				};
 				block.MouseExited += () =>
 				{
@@ -138,22 +138,25 @@ public partial class BattleGrid : Node3D
 				IEnumerable<GridBlock> hoverBlocks = row.Where(gridBlock => gridBlock.gridPosition == block.gridPosition + vector);
 				foreach (GridBlock gridBlock in hoverBlocks)
 				{
-					hoverExtra.Add(gridBlock);
+					allHovered.Add(gridBlock);
 					gridBlock.setHovered(true);
 				}
 			}
 		}
-		currentHovered = block;
+		EmitSignalHoverUpdated(allHovered);
+		middleHovered = block;
 		block.setHovered(true);
 	}
 
 	public void onBlockUnhovered(GridBlock block)
 	{
-		if (currentHovered == block) currentHovered = null;
-		foreach(GridBlock gridBlock in hoverExtra)
+		middleHovered = null;
+		foreach(GridBlock gridBlock in allHovered)
 		{
 			gridBlock.setHovered(false);
 		}
+		allHovered.Clear();
+		EmitSignalHoverUpdated(allHovered);
 		block.setHovered(false);
 	}
 	public Node3D getBattleGridNode()
@@ -181,6 +184,6 @@ public partial class BattleGrid : Node3D
 	}
 	public void resetHoverArea()
 	{
-		hoverSet = null;
+		hoverSet.Clear();
 	}
 }

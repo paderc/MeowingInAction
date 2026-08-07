@@ -56,8 +56,8 @@ public partial class Game : Node
 	{
 		run = new Run();
 		map = new Map(run.currentStage);
-		mainLayerHandler.switchCurrent(map);
 
+		mainLayerHandler.switchCurrent(map);
 		inGameMenu.Visible = false;
 		inGameMenu.ProcessMode = ProcessModeEnum.Always;
 		CallDeferred(nameof(connectMapChoices));

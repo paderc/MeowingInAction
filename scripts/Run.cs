@@ -9,7 +9,10 @@ public partial class Run
 
 	public Run()
 	{
-		deck = Deck.LoadBaseDeck();
-		currentStage = TempConstants.StartStage;
-	}
+        GD.Print("before LoadBaseDeck");
+        deck = Deck.LoadBaseDeck();
+        GD.Print("after LoadBaseDeck, before StartStage");
+        currentStage = TempConstants.StartStage;
+        GD.Print("after StartStage");
+    }
 }
