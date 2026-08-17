@@ -3,36 +3,40 @@ using Godot.Collections;
 using System;
 
 [GlobalClass]
-public partial class SpawnAction : Action
+public partial class SpawnAction : BlockAction
 {
 	[Export]
 	Array<SpawnEntry> entries;
 	public override void perform(CardActionHandler handler)
 	{
-		foreach (SpawnEntry entry in entries)
+		foreach (GridBlock block in handler.hoveredBlocks)
+		{
+			block.entityHandler.makePreviewPermanent();
+		}
+	}
+	public override void undo(CardActionHandler handler)
+	{
+		throw new NotImplementedException();
+	}
+	public override void preview(CardActionHandler handler)
+	{
+		foreach (GridBlock block in handler.hoveredBlocks)
+		{
+			foreach (SpawnEntry entry in entries)
 			{
-			for (int i = 0; i < entry.amount; i++)
-			{
-				foreach (GridBlock block in handler.hovered)
+				for (int i = 0; i < entry.amount; i++)
 				{
-                    block.addEntity(entry.entity);
-                }
+					EntityGUI entityGUI = EntityGUI.getEntityGUI(entry.entity);
+					block.entityHandler.addPreviewEntity(entityGUI);
+				}
 			}
 		}
 	}
-	public override void undo(CardActionHandler cardActionHandler)
+	public override void undoPreview(CardActionHandler handler)
 	{
-		throw new NotImplementedException();
-	}
-	public override void preview(CardActionHandler cardActionHandler)
-	{
-		throw new NotImplementedException();
-	}
-
-	
-
-	public override void undoPreview(CardActionHandler cardActionHandler)
-	{
-		throw new NotImplementedException();
+		foreach (GridBlock block in handler.previewBlocks)
+		{
+			block.entityHandler.clearPreviewEntities();
+		}
 	}
 }

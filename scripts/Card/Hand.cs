@@ -4,9 +4,9 @@ using Godot.Collections;
 public partial class Hand : Control
 {
 	[Signal]
-	public delegate void CardPickedUpEventHandler(Card card);
+	public delegate void CardPickedUpEventHandler(CardGUI cardGUI);
 	[Signal]
-	public delegate void CardPutDownEventHandler(Card card);
+	public delegate void CardPutDownEventHandler(CardGUI cardGUI);
 	const float MAX_ROTATION = 0.1f;
 	const float CARD_SPACING = -20;
 	const float CARD_ASPECT_RATIO = 2f / 3f;
@@ -49,7 +49,7 @@ public partial class Hand : Control
 			cardGUI.makeTransparent();
 			cards.Remove(cardGUI);
 			positionCards();
-			EmitSignalCardPickedUp(cardGUI.card);
+			EmitSignalCardPickedUp(cardGUI);
 		};
 		cardGUI.draggable.justPutDown += () =>
 		{
@@ -57,7 +57,7 @@ public partial class Hand : Control
 			cardGUI.restoreTransparency();
 			cards.Add(cardGUI);
 			positionCards();
-			EmitSignalCardPutDown(cardGUI.card);
+			EmitSignalCardPutDown(cardGUI);
 		};
 		CallDeferred(nameof(positionCards));
 	}

@@ -10,7 +10,6 @@ public partial class Deck : Resource
 	
 	public static Deck LoadBaseDeck()
 	{
-        GD.Print("File exists: " + Godot.FileAccess.FileExists(Paths.baseDeckPath));
         return GD.Load<Deck>(Paths.baseDeckPath);
 	}
 }

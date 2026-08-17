@@ -42,11 +42,11 @@ public partial class Battle : Node3D
 
 	void setupHand()
 	{
-		hand.CardPickedUp += (card) =>
+		hand.CardPickedUp += (cardGUI) =>
 		{
-			battleGrid.changeHoverArea(card.area);
+			battleGrid.changeHoverArea(cardGUI.card.area);
 		};
-		hand.CardPutDown += (card) =>
+		hand.CardPutDown += (cardGUI) =>
 		{
 			battleGrid.resetHoverArea();
 		};

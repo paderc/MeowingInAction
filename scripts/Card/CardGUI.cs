@@ -31,7 +31,7 @@ public partial class CardGUI : Control
 	public void makeTransparent()
 	{
 		Color color = this.Modulate;
-		color.A = 0.5f;
+		color.A = 0.8f;
 		this.Modulate = color;
 	}
 	public void restoreTransparency()

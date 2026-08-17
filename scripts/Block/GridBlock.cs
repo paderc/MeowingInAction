@@ -1,6 +1,7 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Linq;
 
 public partial class GridBlock : StaticBody3D
 {
@@ -11,26 +12,17 @@ public partial class GridBlock : StaticBody3D
 	Label3D label;
 
 	StandardMaterial3D material;
-	float blockSize;
+	public float blockSize;
 
-	Array<Ally> allies = new Array<Ally>();
-	Array<Enemy> enemies = new Array<Enemy>();
+	public EntityHandler entityHandler;
+
 
 	public override void _Ready()
 	{
-		base._Ready();
 		this.Name = "GridBlock" + gridPosition.ToString();
 		meshInstance.Name = "Mesh";
-
-		Ally ally = new Ally();
-		addEntity(ally);
-        addEntityGUI(EntityGUI.getEntityGUI(ally));
-
-        Enemy enemy = new Enemy();
-		addEntity(enemy);
-        addEntityGUI(EntityGUI.getEntityGUI(enemy));
-
-    }
+		entityHandler = new EntityHandler(this);
+	}
 
 	public GridBlock(GridType type, float blockSize)
 	{
@@ -54,26 +46,10 @@ public partial class GridBlock : StaticBody3D
 		setType(type);
 
 		this.gridPosition = gridPosition;
-		setupLabel(blockSize);
 
 		InputRayPickable = true;
 	}
-	public void addEntity(Entity entity)
-	{
-		if (entity.GetType() == typeof(Ally)) allies.Add((Ally)entity);
-        if (entity.GetType() == typeof(Enemy)) enemies.Add((Enemy)entity);
-        refreshLabel();
-	}
-
-	public void addEntityGUI(EntityGUI entityGUI)
-	{
-		float xPosition = 0;
-		if (entityGUI.entity.GetType() == typeof(Ally)) xPosition = -blockSize / 4;
-		else if (entityGUI.entity.GetType() == typeof(Enemy)) xPosition = blockSize / 4;
-        entityGUI.Position = new Vector3(xPosition, 0.5f, 0);
-		refreshLabel();
-        AddChild(entityGUI);
-	}
+	
 
 	protected void setupMesh()
 	{
@@ -100,24 +76,6 @@ public partial class GridBlock : StaticBody3D
 		collision.Name = "Collision";
 		collision.Position = new Vector3(0, 0.05f, 0);
 		AddChild(collision);
-	}
-
-	private void setupLabel(float blockSize)
-	{
-		label = new Label3D();
-		label.PixelSize = 0.01f;
-		label.FontSize = (int)(0.3 * blockSize * 100);
-		label.Billboard = BaseMaterial3D.BillboardModeEnum.Disabled;
-		label.RotationDegrees = new Vector3(-90, 0, 0);
-		label.Position = new Vector3(0, 0.01f, 0);
-		label.HorizontalAlignment = HorizontalAlignment.Center;
-		label.VerticalAlignment = VerticalAlignment.Center;
-		this.AddChild(label);
-	}
-
-	void refreshLabel()
-	{
-		label.Text = ($"{allies.Count}, {enemies.Count}");
 	}
 	public static void findTexturePaths()
 	{

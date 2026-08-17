@@ -11,4 +11,6 @@ public static class Paths
 	public const string mapImagePath = "res://resources/maps";
 	public const string meowSoundsPath = "res://resources/sound/meowSounds";
 	public const string mapBackground = "res://resources/maps";
+	public const string entityMoveNodeUID = "uid://bndp2217hujdq";
+	public const string entityGUIUID = "uid://ggjc5vk56ffq";
 }
