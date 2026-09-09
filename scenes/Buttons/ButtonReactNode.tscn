@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://cbd2dygpgwmo4"]
+
+[ext_resource type="Script" uid="uid://dg6ae6p8ftbnl" path="res://scripts/Menus/ButtonReactNode.cs" id="1_i05k4"]
+
+[node name="ButtonReactNode" type="Node" unique_id=946817791]
+script = ExtResource("1_i05k4")

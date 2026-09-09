@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bavjgn1wwjrxg"]
+
+[ext_resource type="Script" uid="uid://dba6oyy03wuws" path="res://scripts/Animations/TextAnim.cs" id="1_4rak4"]
+[ext_resource type="TextMesh" uid="uid://28a8g4kycnba" path="res://test/new_text_mesh.tres" id="2_mkfes"]
+
+[node name="TextAnim" type="Node3D" unique_id=46969010]
+script = ExtResource("1_4rak4")
+
+[node name="TextParticles" type="GPUParticles3D" parent="." unique_id=491614187]
+unique_name_in_owner = true
+ignore_occlusion_culling = true
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+draw_pass_1 = ExtResource("2_mkfes")

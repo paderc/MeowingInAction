@@ -9,8 +9,16 @@ public partial class StateHandler
 	{
 		this.parent = parent;
 	}
-
+	public void switchCurrent(Node next, ILabelAnimHandler labelAnimHandler)
+	{
+		change(next);
+		labelAnimHandler.playAnimations();
+	}
 	public void switchCurrent(Node next)
+	{
+		change(next);
+	}
+	void change(Node next)
 	{
 		removeIfNotNull(current);
 		addIfNotNull(next);
@@ -20,6 +28,7 @@ public partial class StateHandler
 	{
 		if (state == null) return;
 		parent.RemoveChild(state);
+		state.QueueFree();
 	}
 	void addIfNotNull(Node state)
 	{

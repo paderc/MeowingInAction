@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://bndp2217hujdq"]
+
+[ext_resource type="Script" uid="uid://daokajusg2gx8" path="res://scripts/Reusables/MoveNode.cs" id="1_tr4lc"]
+
+[node name="MoveNode" type="Node" unique_id=8416635]
+script = ExtResource("1_tr4lc")

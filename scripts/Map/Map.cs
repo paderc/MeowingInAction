@@ -26,7 +26,11 @@ public partial class Map : TextureRect
 	{
         PackedScene scene = GD.Load<PackedScene>(mapPath);
         Map map = scene.Instantiate<Map>();
-        if (map == null) GD.PushError("Did not find ingame menu scene at " + mapPath);
+		if (map == null)
+		{
+			GD.PushError("Did not find ingame menu scene at " + mapPath);
+			map.QueueFree();
+		}
         return map;
     }
 	private void setupLevels()
@@ -75,7 +79,7 @@ public partial class Map : TextureRect
 	{
 		this.SetAnchorsPreset(LayoutPreset.FullRect);
 
-		string fullPath = Paths.mapBackground + "/" + stage.ToString() + ".tres";
+		string fullPath = Paths.mapBackgroundPath + "/" + stage.ToString() + ".tres";
 
 		MapRes mapRes = GD.Load<MapRes>(fullPath);
 		if (mapRes == null) GD.PushError("Map image not found at: " + fullPath);

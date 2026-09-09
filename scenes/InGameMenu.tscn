@@ -2,11 +2,11 @@
 
 [ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/images/kotPrawyDol.png" id="1_873k0"]
 [ext_resource type="Script" uid="uid://khnqrpgji5d" path="res://scripts/Menus/InGameMenu.cs" id="1_epk5h"]
-[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/BaseButton.tscn" id="3_epk5h"]
-[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="4_2kxkv"]
-[ext_resource type="Script" uid="uid://bmur636jfjfeb" path="res://scripts/Menus/InGameMenuButtonHandler.cs" id="8_5yiv7"]
+[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/Reusables/BaseButton.tscn" id="3_epk5h"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Menus/Button/Miau.cs" id="4_2kxkv"]
+[ext_resource type="PackedScene" uid="uid://cbd2dygpgwmo4" path="res://scenes/Buttons/ButtonReactNode.tscn" id="5_fq1ta"]
 
-[node name="InGameMenu" type="Control" unique_id=507847562]
+[node name="InGameMenu" type="Control" unique_id=507847562 node_paths=PackedStringArray("resumeButton", "settingsButton", "exitButton", "exitToDesktopButton")]
 visible = false
 layout_mode = 3
 anchors_preset = 15
@@ -15,6 +15,10 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_epk5h")
+resumeButton = NodePath("ButtonArray/Resume")
+settingsButton = NodePath("ButtonArray/Settings")
+exitButton = NodePath("ButtonArray/Exit")
+exitToDesktopButton = NodePath("ButtonArray/ExitToDesktop")
 
 [node name="Cats" type="Control" parent="." unique_id=323295905]
 layout_mode = 1
@@ -50,6 +54,7 @@ grow_vertical = 2
 
 [node name="Resume" parent="ButtonArray" unique_id=986164777 instance=ExtResource("3_epk5h")]
 layout_mode = 2
+offset_transform_enabled = true
 
 [node name="ResizableLabel" parent="ButtonArray/Resume" index="0" unique_id=1554987967]
 text = "Resume"
@@ -61,6 +66,7 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Meow" parent="ButtonArray" unique_id=491661652 instance=ExtResource("3_epk5h")]
 layout_mode = 2
+offset_transform_enabled = true
 script = ExtResource("4_2kxkv")
 
 [node name="ResizableLabel" parent="ButtonArray/Meow" index="0" unique_id=1554987967]
@@ -73,6 +79,7 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Settings" parent="ButtonArray" unique_id=1081408105 instance=ExtResource("3_epk5h")]
 layout_mode = 2
+offset_transform_enabled = true
 
 [node name="ResizableLabel" parent="ButtonArray/Settings" index="0" unique_id=1554987967]
 text = "Settings"
@@ -84,8 +91,9 @@ size_flags_stretch_ratio = 0.1
 
 [node name="Exit" parent="ButtonArray" unique_id=597914840 instance=ExtResource("3_epk5h")]
 layout_mode = 2
+offset_transform_enabled = true
 
-[node name="ResizableLabel" parent="ButtonArray/Exit" index="0" unique_id=1313986842]
+[node name="ResizableLabel" parent="ButtonArray/Exit" index="0" unique_id=1554987967]
 text = "Exit"
 
 [node name="AutoResizeLabel" parent="ButtonArray/Exit/ResizableLabel" index="0" unique_id=760233988]
@@ -98,12 +106,13 @@ size_flags_stretch_ratio = 0.1
 
 [node name="ExitToDesktop" parent="ButtonArray" unique_id=1631371395 instance=ExtResource("3_epk5h")]
 layout_mode = 2
+offset_transform_enabled = true
 
 [node name="ResizableLabel" parent="ButtonArray/ExitToDesktop" index="0" unique_id=1554987967]
 text = "Exit to desktop"
 
-[node name="InGameMenuButtonHandler" type="Node" parent="." unique_id=1913146931]
-script = ExtResource("8_5yiv7")
+[node name="ButtonReactNode" parent="." unique_id=946817791 node_paths=PackedStringArray("buttonContainer") instance=ExtResource("5_fq1ta")]
+buttonContainer = NodePath("../ButtonArray")
 
 [editable path="ButtonArray/Resume"]
 [editable path="ButtonArray/Resume/ResizableLabel"]

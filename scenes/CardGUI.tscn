@@ -50,7 +50,8 @@ anchor_right = 0.1
 anchor_bottom = 0.1
 texture = SubResource("PlaceholderTexture2D_g2uj2")
 
-[node name="Cost" type="Label" parent="MarginContainer/Control/CostBG" unique_id=1968759733]
+[node name="CostLabel" type="Label" parent="MarginContainer/Control/CostBG" unique_id=1968759733]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -80,6 +81,7 @@ anchor_bottom = 0.6
 texture = SubResource("PlaceholderTexture2D_up0cc")
 
 [node name="TitleLabel" type="Label" parent="MarginContainer/Control/TitleBG" unique_id=154036335]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -100,6 +102,7 @@ anchor_bottom = 0.745
 texture = SubResource("PlaceholderTexture2D_up0cc")
 
 [node name="DescLabel" type="Label" parent="MarginContainer/Control/DescBG" unique_id=575745648]
+unique_name_in_owner = true
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

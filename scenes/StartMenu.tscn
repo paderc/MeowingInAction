@@ -4,8 +4,9 @@
 [ext_resource type="Texture2D" uid="uid://cmawhpk4c6381" path="res://resources/images/defaultTexture.res" id="2_sf8pk"]
 [ext_resource type="Theme" uid="uid://b5vntabvtkql3" path="res://scenes/mainMenuTheme.tres" id="3_j6af4"]
 [ext_resource type="Texture2D" uid="uid://cc8hmiyrelr0t" path="res://resources/images/kotPrawyDol.png" id="4_xbxv1"]
-[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/BaseButton.tscn" id="5_aso40"]
-[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="6_cuvp2"]
+[ext_resource type="PackedScene" uid="uid://bhovilmtcc4db" path="res://scenes/Reusables/BaseButton.tscn" id="5_aso40"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Menus/Button/Miau.cs" id="6_cuvp2"]
+[ext_resource type="PackedScene" uid="uid://cbd2dygpgwmo4" path="res://scenes/Buttons/ButtonReactNode.tscn" id="7_cuvp2"]
 
 [sub_resource type="Animation" id="Animation_p6fgn"]
 resource_name = "ColorShift"
@@ -21,7 +22,7 @@ _data = {
 &"RESET": SubResource("Animation_jep6e")
 }
 
-[node name="StartMenu" type="Control" unique_id=809050274]
+[node name="StartMenu" type="Control" unique_id=809050274 node_paths=PackedStringArray("playButton", "meowButton", "settingsButton", "exitToDesktopButton")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -30,6 +31,10 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("3_j6af4")
 script = ExtResource("1_frkif")
+playButton = NodePath("ButtonArray/Play")
+meowButton = NodePath("ButtonArray/Meow")
+settingsButton = NodePath("ButtonArray/Settings")
+exitToDesktopButton = NodePath("ButtonArray/ExitToDesktop")
 
 [node name="MenuBackground" type="TextureRect" parent="." unique_id=1284617191]
 layout_mode = 1
@@ -125,11 +130,14 @@ layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.1
 
-[node name="Exit" parent="ButtonArray" unique_id=1233731315 instance=ExtResource("5_aso40")]
+[node name="ExitToDesktop" parent="ButtonArray" unique_id=1233731315 instance=ExtResource("5_aso40")]
 layout_mode = 2
 
-[node name="ResizableLabel" parent="ButtonArray/Exit" index="0" unique_id=1554987967]
-text = "Exit"
+[node name="ResizableLabel" parent="ButtonArray/ExitToDesktop" index="0" unique_id=1554987967]
+text = "Exit to desktop"
+
+[node name="ButtonReactNode" parent="." unique_id=946817791 node_paths=PackedStringArray("buttonContainer") instance=ExtResource("7_cuvp2")]
+buttonContainer = NodePath("../ButtonArray")
 
 [editable path="ButtonArray/Play"]
 [editable path="ButtonArray/Play/ResizableLabel"]
@@ -137,5 +145,5 @@ text = "Exit"
 [editable path="ButtonArray/Meow/ResizableLabel"]
 [editable path="ButtonArray/Settings"]
 [editable path="ButtonArray/Settings/ResizableLabel"]
-[editable path="ButtonArray/Exit"]
-[editable path="ButtonArray/Exit/ResizableLabel"]
+[editable path="ButtonArray/ExitToDesktop"]
+[editable path="ButtonArray/ExitToDesktop/ResizableLabel"]

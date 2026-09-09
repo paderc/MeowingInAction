@@ -11,9 +11,7 @@ public partial class Game : Node
 
 	Map map;
 
-	Node3D battleNode;
 	Battle battle;
-	Run run;
 
 	public override void _Ready()
 	{
@@ -26,13 +24,12 @@ public partial class Game : Node
 		popupLayerHandler = new StateHandler(GetNode<CanvasLayer>("PopupLayer"));
 		this.ProcessMode = ProcessModeEnum.Always;
 
-		setupStartMenu();
-		setupInGameMenu();
+		switchToStartMenu();
 	}
 	void setupStartMenu()
 	{
 		startMenu = StartMenu.create();
-		mainLayerHandler.switchCurrent(startMenu);
+		mainLayerHandler.switchCurrent(startMenu, startMenu.labelAnimHandler);
 		startMenu.Start += startRun;
 		startMenu.Exit += leaveGame;
 	}
@@ -43,19 +40,18 @@ public partial class Game : Node
 		inGameMenu.ProcessMode = ProcessModeEnum.Disabled;
 
 
-		inGameMenu.buttonHandler.Resume += () => inGameMenu.turnOffByResumeButton();
-		inGameMenu.buttonHandler.Exited += () => 
-		{
-			mainLayerHandler.switchCurrent(startMenu);
-			inGameMenu.Visible = false;
-			inGameMenu.ProcessMode = ProcessModeEnum.Disabled;
-		};
-		inGameMenu.buttonHandler.ExitedToDesktop += () => GetTree().Quit();
+		inGameMenu.Resume += inGameMenu.turnOffByResumeButton;
+		inGameMenu.Exited += switchToStartMenu;
+		inGameMenu.ExitedToDesktop += () => GetTree().Quit();
+	}
+	void switchToStartMenu()
+	{
+		setupStartMenu();
+		setupInGameMenu();
 	}
 	void startRun()
 	{
-		run = new Run();
-		map = new Map(run.currentStage);
+		map = new Map(Run.currentStage);
 
 		mainLayerHandler.switchCurrent(map);
 		inGameMenu.Visible = false;
@@ -72,13 +68,15 @@ public partial class Game : Node
 	}
 	void startBattle()
 	{
-		battle = new Battle(BattleGrid.getBattleGrid(run.currentStage));
-		battleNode = battle.getBattleNode(run.deck);
+		ShaderWarmup.WarmUpAnimations(this);
+		ShaderWarmup.WarmUpEntityGUI(this);
+		if (!Run.started) Run.startNew(map.stage);
+		battle = Battle.create(BattleGrid.getBattleGrid(Run.currentStage));
 		
-		Hand hand = battleNode.GetNode<Hand>("HandLayer/HandSpace");
+		Hand hand = battle.GetNode<Hand>("HandLayer/HandSpace");
 		inGameMenu.MenuOpened += (focus) => hand.forceHeldDown();
 		
-		mainLayerHandler.switchCurrent(battleNode);
+		mainLayerHandler.switchCurrent(battle);
 	}
 	void leaveGame()
 	{

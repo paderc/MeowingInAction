@@ -1,0 +1,62 @@
+[gd_resource type="Resource" script_class="Card" format=3 uid="uid://gvfvb0cq0x7b"]
+
+[ext_resource type="Script" uid="uid://db8240jvw1r3q" path="res://scripts/Animations/AnimationType.cs" id="1_267a0"]
+[ext_resource type="Script" uid="uid://dvaxh43frs2rr" path="res://scripts/Entries/DamageEntry.cs" id="2_xpo5f"]
+[ext_resource type="Script" uid="uid://ef3qjlqxnoxd" path="res://scripts/Actions/DamageAction.cs" id="3_pxcvy"]
+[ext_resource type="Script" uid="uid://mltpc2twu1m2" path="res://scripts/Actions/Areas/Area.cs" id="4_30aih"]
+[ext_resource type="Script" uid="uid://erb7rg5r517k" path="res://scripts/Card/Card.cs" id="5_8j1kl"]
+
+[sub_resource type="Resource" id="Resource_r4i5o"]
+script = ExtResource("1_267a0")
+category = 2
+instance = 1
+metadata/_custom_type_script = "uid://db8240jvw1r3q"
+
+[sub_resource type="Resource" id="Resource_fysap"]
+script = ExtResource("1_267a0")
+metadata/_custom_type_script = "uid://db8240jvw1r3q"
+
+[sub_resource type="Resource" id="Resource_s0ve3"]
+script = ExtResource("2_xpo5f")
+amount = 5
+metadata/_custom_type_script = "uid://dvaxh43frs2rr"
+
+[sub_resource type="Resource" id="Resource_4jd7h"]
+script = ExtResource("3_pxcvy")
+entry = SubResource("Resource_s0ve3")
+animations = Array[Object]([SubResource("Resource_r4i5o"), SubResource("Resource_fysap")])
+metadata/_custom_type_script = "uid://ef3qjlqxnoxd"
+
+[sub_resource type="Resource" id="Resource_rgcej"]
+script = ExtResource("1_267a0")
+category = 2
+instance = 1
+metadata/_custom_type_script = "uid://db8240jvw1r3q"
+
+[sub_resource type="Resource" id="Resource_8aash"]
+script = ExtResource("1_267a0")
+metadata/_custom_type_script = "uid://db8240jvw1r3q"
+
+[sub_resource type="Resource" id="Resource_sqyrb"]
+script = ExtResource("2_xpo5f")
+amount = 5
+metadata/_custom_type_script = "uid://dvaxh43frs2rr"
+
+[sub_resource type="Resource" id="Resource_wrpxe"]
+script = ExtResource("3_pxcvy")
+entry = SubResource("Resource_sqyrb")
+animations = Array[Object]([SubResource("Resource_rgcej"), SubResource("Resource_8aash")])
+metadata/_custom_type_script = "uid://ef3qjlqxnoxd"
+
+[sub_resource type="Resource" id="Resource_rwkuq"]
+script = ExtResource("4_30aih")
+posRelative = Array[Vector2i]([Vector2i(0, 0)])
+metadata/_custom_type_script = "uid://mltpc2twu1m2"
+
+[resource]
+script = ExtResource("5_8j1kl")
+name = "dmg5x2"
+actionList = Array[Object]([SubResource("Resource_4jd7h"), SubResource("Resource_wrpxe")])
+cost = 3
+area = SubResource("Resource_rwkuq")
+metadata/_custom_type_script = "uid://erb7rg5r517k"

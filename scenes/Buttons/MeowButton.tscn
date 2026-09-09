@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bl5vlimjg7o4c"]
 
-[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Button/Miau.cs" id="1_fd1yu"]
-[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/DefaultResizableLabel.tscn" id="2_l61s0"]
+[ext_resource type="Script" uid="uid://dys3e27umdmln" path="res://scripts/Menus/Button/Miau.cs" id="1_fd1yu"]
+[ext_resource type="PackedScene" uid="uid://c0xl88sb1i45p" path="res://scenes/Reusables/DefaultLabel.tscn" id="2_l61s0"]
 
 [node name="Miau" type="TextureButton" unique_id=1761960695]
 anchors_preset = 15

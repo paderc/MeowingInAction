@@ -1,0 +1,38 @@
+[gd_resource type="TextMesh" format=3 uid="uid://28a8g4kycnba"]
+
+[sub_resource type="FontFile" id="FontFile_2sh3i"]
+cache/0/variation_coordinates = {}
+cache/0/face_index = 0
+cache/0/embolden = 0.0
+cache/0/transform = Transform2D(1, 0, 0, 1, 0, 0)
+cache/0/spacing_top = 0
+cache/0/spacing_bottom = 0
+cache/0/spacing_space = 0
+cache/0/spacing_glyph = 0
+cache/0/baseline_offset = 0.0
+cache/0/16/0/ascent = 0.0
+cache/0/16/0/descent = 0.0
+cache/0/16/0/underline_position = 0.0
+cache/0/16/0/underline_thickness = 0.0
+cache/0/16/0/scale = 1.0
+cache/0/40/0/ascent = 0.0
+cache/0/40/0/descent = 0.0
+cache/0/40/0/underline_position = 0.0
+cache/0/40/0/underline_thickness = 0.0
+cache/0/40/0/scale = 1.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rrayb"]
+cull_mode = 2
+shading_mode = 0
+albedo_color = Color(2.163723, 0.7185393, 1.3264097, 1)
+billboard_mode = 1
+stencil_flags = 2
+stencil_reference = 2
+stencil_outline_thickness = 0.194
+
+[resource]
+material = SubResource("StandardMaterial3D_rrayb")
+text = "JEB"
+font = SubResource("FontFile_2sh3i")
+font_size = 40
+uppercase = true

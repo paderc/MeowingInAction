@@ -1,0 +1,24 @@
+[gd_scene format=3 uid="uid://cbsgq5xqxhmsl"]
+
+[ext_resource type="TextMesh" uid="uid://28a8g4kycnba" path="res://test/new_text_mesh.tres" id="1_8833h"]
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_isc0i"]
+direction = Vector3(0, 1, 0)
+spread = 30.0
+initial_velocity_min = 0.5
+initial_velocity_max = 0.5
+gravity = Vector3(0, 0, 0)
+linear_accel_min = 0.49999776
+linear_accel_max = 0.49999776
+collision_mode = 2
+collision_use_scale = true
+
+[node name="TextParticles" type="GPUParticles3D" unique_id=64367489]
+unique_name_in_owner = true
+emitting = false
+amount = 1
+lifetime = 2.0
+one_shot = true
+explosiveness = 1.0
+process_material = SubResource("ParticleProcessMaterial_isc0i")
+draw_pass_1 = ExtResource("1_8833h")

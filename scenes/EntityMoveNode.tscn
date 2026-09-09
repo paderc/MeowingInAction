@@ -1,6 +1,0 @@
-[gd_scene format=3 uid="uid://bndp2217hujdq"]
-
-[ext_resource type="Script" uid="uid://daokajusg2gx8" path="res://scripts/Entity/EntityMoveNode.cs" id="1_6p1m5"]
-
-[node name="EntityMoveNode" type="Node" unique_id=8416635]
-script = ExtResource("1_6p1m5")

@@ -7,9 +7,9 @@ using System.Linq;
 public partial class BattleGrid : Node3D
 {
 	[Signal]
-	public delegate void HoverUpdatedEventHandler(Array<GridBlock> block);
+	public delegate void HoverUpdatedEventHandler(Array<GridBlock> blocks);
 
-	float blockSize = 2.0f;
+	public float blockSize = 2.0f;
 
 	public HashSet<Vector2I> hoverSet = new HashSet<Vector2I>();
 	public GridBlock middleHovered;
@@ -156,12 +156,12 @@ public partial class BattleGrid : Node3D
 			gridBlock.setHovered(false);
 		}
 		allHovered.Clear();
-		EmitSignalHoverUpdated(allHovered);
+		EmitSignalHoverUpdated(null);
 		block.setHovered(false);
 	}
 	public Node3D getBattleGridNode()
 	{
-		PackedScene battleScene = GD.Load<PackedScene>(Paths.battleGridScene);
+		PackedScene battleScene = GD.Load<PackedScene>(Paths.battleGridUID);
 		Node3D scene = battleScene.Instantiate<Node3D>();
 		Node3D gridSpace = scene.GetNode<Node3D>("GridSpace");
 		gridSpace.AddChild(this);

@@ -1,36 +1,39 @@
 using Godot;
-using System;
 
 public partial class EntityGUI : Node3D
 {
-	static PackedScene entityMoveNodeScene = ResourceLoader.Load<PackedScene>(Paths.entityMoveNodeUID);
 
-	public Entity entity;
-	private float baseY;
-	private float speed = 2.0f;
-	private float oscillation = 0f;
+	Entity.DeadEventHandler deadHandler;
+	[Signal]
+	public delegate void DeadEventHandler(EntityGUI entityGUI);
+	float baseY;
+	float oscillationSpeed = 2.0f;
+	float oscillation = 0f;
 	private bool goUp = true;
-	public Vector3 targetPosition;
-	Direction direction;
+	Direction _direction;
+	public Direction direction
+	{
+		get => _direction;
+		set { _direction = value; if(moveNode != null) moveNode.correctDirection(_direction); }
+	}
 
-	EntityMoveNode currentMoveNode;
+	public MoveNode moveNode;
 	MeshInstance3D meshInstance;
 
+	bool isDead = false;
 	public override void _Ready()
 	{
 		baseY = Position.Y;
 		meshInstance = GetNode<MeshInstance3D>("Muchkin1_002");
+		moveNode = MoveNode.create();
+		AddChild(moveNode);
+		moveNode.correctDirection(direction);
 	}
 
-	public void moveTo(Vector3 newPosition)
-	{
-		this.targetPosition = newPosition;
-		currentMoveNode = entityMoveNodeScene.Instantiate<EntityMoveNode>();
-		AddChild(currentMoveNode);
-	}
+
 	public override void _Process(double delta)
 	{
-		float step = speed * (float)delta;
+		float step = oscillationSpeed * (float)delta;
 
 		if (goUp)
 		{
@@ -67,36 +70,16 @@ public partial class EntityGUI : Node3D
 	}
 	public void resetMaterial()
 	{
-		meshInstance.MaterialOverride = null;
+		changeColor(Colors.White);
 	}
-	public static EntityGUI getEntityGUI(Entity entity)
+	public static EntityGUI getEntityGUI()
 	{
 		PackedScene scene = GD.Load<PackedScene>(Paths.entityGUIUID);
 		EntityGUI entityGUI = scene.Instantiate<EntityGUI>();
-		entityGUI.entity = entity;
-		entity.setupEntityGUI(entityGUI);
-
-		entityGUI.changeDirection(entity.direction);
-
 		return entityGUI;
 	}
-
-	public void changeDirection(Direction direction)
+	public void die()
 	{
-		this.direction = direction;
-		correctDirection();
+		this.QueueFree();
 	}
-	public void correctDirection()
-	{
-		float angleDeg = 0;
-		switch (this.direction)
-		{
-			case Direction.UP: angleDeg = 180f; break;
-			case Direction.RIGHT: angleDeg = 90f; break;
-			case Direction.LEFT: angleDeg = -90f; break;
-			case Direction.DOWN: angleDeg = 0f; break;
-		}
-		this.RotationDegrees = new Vector3(this.RotationDegrees.X, angleDeg, this.RotationDegrees.Z);
-	}
-	
 }

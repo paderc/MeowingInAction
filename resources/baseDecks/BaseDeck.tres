@@ -1,10 +1,9 @@
 [gd_resource type="Resource" script_class="Deck" format=3 uid="uid://btk4712e2djr0"]
 
-[ext_resource type="Resource" uid="uid://xxavoebtvtu3" path="res://resources/cards/Spawn1.tres" id="1_4bqck"]
+[ext_resource type="Resource" uid="uid://xxmienes2nw7" path="res://resources/cards/dmg5x2.tres" id="1_4l42m"]
 [ext_resource type="Script" uid="uid://cna2icxc0o3ab" path="res://scripts/Card/Deck.cs" id="1_cd36h"]
-[ext_resource type="Resource" uid="uid://b6kkgo04i7bu" path="res://resources/cards/Spawn3.tres" id="2_4l42m"]
 
 [resource]
 script = ExtResource("1_cd36h")
-baseCards = Array[Object]([ExtResource("1_4bqck"), ExtResource("2_4l42m")])
+baseCards = Array[Object]([ExtResource("1_4l42m")])
 metadata/_custom_type_script = "uid://cna2icxc0o3ab"

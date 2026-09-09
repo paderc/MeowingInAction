@@ -1,0 +1,7 @@
+[gd_resource type="Resource" script_class="AnimationType" format=3 uid="uid://c8getbgobuv1"]
+
+[ext_resource type="Script" uid="uid://db8240jvw1r3q" path="res://scripts/Animations/AnimationType.cs" id="1_u7lue"]
+
+[resource]
+script = ExtResource("1_u7lue")
+metadata/_custom_type_script = "uid://db8240jvw1r3q"

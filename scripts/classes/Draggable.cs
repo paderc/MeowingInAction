@@ -9,7 +9,8 @@ public partial class Draggable : Node
 	public delegate void justPickedUpEventHandler();
 	bool pickedUp;
 	bool canPickUp;
-	bool snapBack = true;
+	public bool snapBack = true;
+	public bool canUse = true;
 	Vector2 dragOffset;
 	Vector2 originalPosition;
 	Control targetControl;

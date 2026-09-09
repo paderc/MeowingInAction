@@ -1,42 +1,38 @@
 using Godot;
 using Godot.Collections;
 using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 [GlobalClass]
 public partial class SpawnAction : BlockAction
 {
 	[Export]
 	Array<SpawnEntry> entries;
-	public override void perform(CardActionHandler handler)
+	public override async Task confirmChangesLikeOn(GridBlock block)
 	{
-		foreach (GridBlock block in handler.hoveredBlocks)
+		foreach (SpawnEntry entry in entries)
 		{
-			block.entityHandler.makePreviewPermanent();
-		}
-	}
-	public override void undo(CardActionHandler handler)
-	{
-		throw new NotImplementedException();
-	}
-	public override void preview(CardActionHandler handler)
-	{
-		foreach (GridBlock block in handler.hoveredBlocks)
-		{
-			foreach (SpawnEntry entry in entries)
+			for (int i = 0; i < entry.amount; i++)
 			{
-				for (int i = 0; i < entry.amount; i++)
-				{
-					EntityGUI entityGUI = EntityGUI.getEntityGUI(entry.entity);
-					block.entityHandler.addPreviewEntity(entityGUI);
-				}
+				block.entityHandler.addEntity(new Entity(entry.faction, entry.health));
 			}
+			Logger.Info(entry.ToString() + " onto " + block.ToString());
+			await Task.CompletedTask;
 		}
 	}
-	public override void undoPreview(CardActionHandler handler)
+
+	public override void previewLikeOn(GridBlock block)
 	{
-		foreach (GridBlock block in handler.previewBlocks)
+		foreach (SpawnEntry entry in entries)
 		{
-			block.entityHandler.clearPreviewEntities();
+			Color color = entry.faction == Faction.Ally ? Colors.Green : Colors.Red;
+			block.entityHandler.addSpawnPreviewEntity(color, entry.amount);
 		}
+	}
+
+	public override void undoPreviewLikeOn(GridBlock block)
+	{
+		block.entityHandler.clearSpawnPreviewEntities();
 	}
 }

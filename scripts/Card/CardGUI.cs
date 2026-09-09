@@ -17,9 +17,9 @@ public partial class CardGUI : Control
 	}
 	public override void _Ready()
 	{
-		costLabel = GetNode<Label>("MarginContainer/Control/CostBG/Cost");
-		nameLabel = GetNode<Label>("MarginContainer/Control/TitleBG/TitleLabel");
-		descLabel = GetNode<Label>("MarginContainer/Control/TitleBG/TitleLabel");
+		costLabel = GetNode<Label>("%CostLabel");
+		nameLabel = GetNode<Label>("%TitleLabel");
+		descLabel = GetNode<Label>("%DescLabel");
 		updateUI();
 	}
 	void updateUI()

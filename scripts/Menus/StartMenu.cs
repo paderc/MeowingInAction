@@ -1,3 +1,4 @@
+
 using Godot;
 using System;
 
@@ -9,29 +10,57 @@ public partial class StartMenu : Control
 	public delegate void StartEventHandler();
 	[Signal]
 	public delegate void ExitEventHandler();
+	public LabelAnimHandler<TypewriterLabelComp> labelAnimHandler = new LabelAnimHandler<TypewriterLabelComp>();
+	[Export]
+	TextureButton playButton;
+	[Export]
+	TextureButton meowButton;
+	[Export]
+	TextureButton settingsButton;
+	[Export]
+	TextureButton exitToDesktopButton;
 	public override void _Ready()
 	{
-		TextureButton playButton = GetNode<TextureButton>("ButtonArray/Play");
-		if (playButton == null)
-		{
-			return;
-		}
+		manageButtons();
+	}
+	void setupLabels()
+	{
+		Label play = playButton.GetNode<Label>("ResizableLabel");
+		labelAnimHandler.addLabel(play);
+		Label meow = meowButton.GetNode<Label>("ResizableLabel");
+		labelAnimHandler.addLabel(meow);
+		Label settings = settingsButton.GetNode<Label>("ResizableLabel");
+		labelAnimHandler.addLabel(settings);
+		Label exitToDesktop = playButton.GetNode<Label>("ResizableLabel");
+		labelAnimHandler.addLabel(exitToDesktop);
+		labelAnimHandler.addComponentsToLabels();
+	}
+	void manageButtons()
+	{
+		if (playButton == null) { Logger.Error("Button not assigned"); return; };
+		if (meowButton == null) { Logger.Error("Button not assigned"); return; }
+		if (settingsButton == null) { Logger.Error("Button not assigned"); return; }
+		if (exitToDesktopButton == null) {Logger.Error("Button not assigned"); return; }
+
 		playButton.Pressed += () => {
 			EmitSignalStart();
 		};
 
-		TextureButton exitToDesktopButton = GetNode<TextureButton>("ButtonArray/Exit");
 		exitToDesktopButton.Pressed += () =>
 		{
 			EmitSignal(SignalName.Exit);
 		};
+		setupLabels();
 	}
-
 	public static StartMenu create()
 	{
 		PackedScene scene = GD.Load<PackedScene>(startMenuPath);
 		StartMenu startMenu = scene.Instantiate<StartMenu>();
-		if (startMenu == null) GD.PushError("Did not find start menu scene at " + startMenuPath);
+		if (startMenu == null)
+		{
+			GD.PushError("Did not find start menu scene at " + startMenuPath);
+			startMenu.QueueFree();
+		}
 		return startMenu;
 	}
 

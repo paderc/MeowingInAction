@@ -103,5 +103,8 @@ public partial class GridBlock : StaticBody3D
 		material.AlbedoColor = hovered ? Colors.Burlywood : Colors.White;
 	}
 
-	
+    public override string ToString()
+    {
+		return "GridBlock " + type.ToString() + " at " + this.gridPosition; 
+    }
 }
