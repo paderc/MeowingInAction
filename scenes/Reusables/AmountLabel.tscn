@@ -1,0 +1,13 @@
+[gd_scene format=3 uid="uid://b8vhou83isqat"]
+
+[ext_resource type="Script" uid="uid://drymvb5aoe64h" path="res://scripts/Reusables/AmountLabel.cs" id="1_mmsac"]
+
+[node name="AmountLabel" type="Label" unique_id=8698033]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+horizontal_alignment = 1
+vertical_alignment = 1
+script = ExtResource("1_mmsac")

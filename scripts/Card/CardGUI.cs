@@ -1,16 +1,16 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class CardGUI : Control
 {
 	static string cardGUIPath = "res://scenes/CardGUI.tscn";
 
+	public bool justPlayed = false;
 	public Draggable draggable;
 	public Card card;
-	Label costLabel;
-	Label nameLabel;
-	Label descLabel;
-	
+	Label costLabel, nameLabel, descLabel;
+	Tween currentTween;
 	public CardGUI()
 	{
 		draggable = new Draggable(this);
@@ -28,7 +28,31 @@ public partial class CardGUI : Control
 		nameLabel.Text = card.name;
 		descLabel.Text = card.description;
 	}
-	public void makeTransparent()
+	public async Task moveToGlobal(Vector2 globalTarget, bool useFx = false)
+	{
+		const float DURATION = 0.5f;
+        if (currentTween != null && currentTween.IsRunning())
+            currentTween.Kill();
+
+        currentTween = CreateTween();
+        currentTween.TweenProperty(this, "global_position", globalTarget, DURATION)
+                    .SetEase(Tween.EaseType.Out);
+        await ToSignal(currentTween, Tween.SignalName.Finished);
+        currentTween = null;
+    }
+    public async Task moveToLocal(Vector2 localTarget, bool useFx = false)
+    {
+        const float DURATION = 0.5f;
+        if (currentTween != null && currentTween.IsRunning())
+            currentTween.Kill();
+
+        currentTween = CreateTween();
+        currentTween.TweenProperty(this, "position", localTarget, DURATION)
+                    .SetEase(Tween.EaseType.Out);
+        await ToSignal(currentTween, Tween.SignalName.Finished);
+        currentTween = null;
+    }
+    public void makeTransparent()
 	{
 		Color color = this.Modulate;
 		color.A = 0.8f;

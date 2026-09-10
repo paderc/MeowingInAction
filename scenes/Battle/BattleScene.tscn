@@ -3,14 +3,18 @@
 [ext_resource type="Script" uid="uid://d0whbfkqp2n0s" path="res://scripts/Battle/Battle.cs" id="1_4p34j"]
 [ext_resource type="PackedScene" uid="uid://dowp7jhhygsaq" path="res://scenes/Battle/BattleGridScene.tscn" id="2_nckk0"]
 [ext_resource type="Script" uid="uid://cfubq6v184pdh" path="res://scripts/Card/Hand.cs" id="3_85vv1"]
+[ext_resource type="PackedScene" uid="uid://du7v7g7705lf" path="res://scenes/Reusables/AmountBGIcon.tscn" id="4_2fq3d"]
 [ext_resource type="Script" uid="uid://dqbwygqbhegk6" path="res://scripts/Card/CardQueue.cs" id="4_nckk0"]
+[ext_resource type="PackedScene" uid="uid://b8vhou83isqat" path="res://scenes/Reusables/AmountLabel.tscn" id="5_8e0o3"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_3mvhd"]
 
 [sub_resource type="PlaceholderTexture2D" id="PlaceholderTexture2D_28s16"]
 
-[node name="BattleScene" type="Node3D" unique_id=1823190716]
+[node name="BattleScene" type="Node3D" unique_id=1823190716 node_paths=PackedStringArray("drawPile", "discardPile")]
 script = ExtResource("1_4p34j")
+drawPile = NodePath("HandLayer/DrawPile")
+discardPile = NodePath("HandLayer/DiscardPile")
 
 [node name="BattleGrid" parent="." unique_id=845623948 instance=ExtResource("2_nckk0")]
 
@@ -45,6 +49,24 @@ grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_3mvhd")
 
+[node name="DrawAmount" type="Control" parent="HandLayer/DrawPile" unique_id=267895363]
+unique_name_in_owner = true
+custom_maximum_size = Vector2(60, 60)
+propagate_maximum_size = true
+layout_mode = 1
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AmountBGIcon" parent="HandLayer/DrawPile/DrawAmount" unique_id=651188348 instance=ExtResource("4_2fq3d")]
+layout_mode = 1
+offset_left = 0.3999939
+offset_right = 0.3999939
+
+[node name="AmountLabel" parent="HandLayer/DrawPile/DrawAmount" unique_id=8698033 instance=ExtResource("5_8e0o3")]
+layout_mode = 1
+
 [node name="DiscardPile" type="Control" parent="HandLayer" unique_id=393676678]
 layout_mode = 3
 anchor_left = 0.85
@@ -60,6 +82,21 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 texture = SubResource("PlaceholderTexture2D_28s16")
+
+[node name="DiscardAmount" type="Control" parent="HandLayer/DiscardPile" unique_id=1322241319]
+custom_maximum_size = Vector2(60, 60)
+propagate_maximum_size = true
+layout_mode = 1
+anchor_left = 0.8
+anchor_right = 1.0
+anchor_bottom = 0.2
+pivot_offset_ratio = Vector2(0.5, 0.5)
+
+[node name="AmountBGIcon" parent="HandLayer/DiscardPile/DiscardAmount" unique_id=1704246393 instance=ExtResource("4_2fq3d")]
+layout_mode = 1
+
+[node name="AmountLabel" parent="HandLayer/DiscardPile/DiscardAmount" unique_id=1413643967 instance=ExtResource("5_8e0o3")]
+layout_mode = 1
 
 [node name="CardDropSpace" type="Control" parent="HandLayer" unique_id=801321331]
 layout_mode = 3

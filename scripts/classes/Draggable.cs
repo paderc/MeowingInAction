@@ -9,12 +9,12 @@ public partial class Draggable : Node
 	public delegate void justPickedUpEventHandler();
 	bool pickedUp;
 	bool canPickUp;
-	public bool snapBack = true;
 	public bool canUse = true;
 	Vector2 dragOffset;
 	Vector2 originalPosition;
 	Control targetControl;
-
+	Action onMouseEntered = null;
+	Action onMouseExited = null;
 	public Draggable(Control target)
 	{
 		this.targetControl = target;
@@ -22,14 +22,17 @@ public partial class Draggable : Node
     }
 
 	public override void _Ready()
-	{
-		targetControl.MouseEntered += () => canPickUp = true;
-		targetControl.MouseExited += () => canPickUp = false;
+	{   
+		onMouseEntered = () => canPickUp = true;
+		onMouseExited = () => canPickUp = false;
+        targetControl.MouseEntered += onMouseEntered;
+		targetControl.MouseExited += onMouseExited;
 		originalPosition = targetControl.GlobalPosition;
 	}
 
 	public void pickUp()
 	{
+		if (!canUse) return;
 		pickedUp = true;
         targetControl.Scale = 1.2f * Vector2.One;
 		dragOffset = targetControl.GetGlobalMousePosition() - targetControl.GlobalPosition;
@@ -45,23 +48,6 @@ public partial class Draggable : Node
 		pickedUp = false;
         targetControl.Scale = Vector2.One;
 		EmitSignal(SignalName.justPutDown);
-	}
-
-	void clampToParent()
-	{
-		Vector2 viewportSize = targetControl.GetViewportRect().Size;
-
-        targetControl.SetGlobalPosition(
-			new Vector2(
-				Math.Clamp(targetControl.GlobalPosition.X, 0, viewportSize.X - targetControl.Size.X),
-				Math.Clamp(targetControl.GlobalPosition.Y, 0 , viewportSize.Y - targetControl.Size.Y)
-			)
-		);
-	}
-
-	void _snapBack()
-	{
-        targetControl.SetGlobalPosition(originalPosition);
 	}
 
 	public override void _Input(InputEvent @event) {

@@ -1,5 +1,7 @@
 using Godot;
 using Godot.Collections;
+using System;
+using System.Runtime.CompilerServices;
 
 public partial class Hand : Control
 {
@@ -10,8 +12,9 @@ public partial class Hand : Control
 	const float MAX_ROTATION = 0.1f;
 	const float CARD_SPACING = -20;
 	const float CARD_ASPECT_RATIO = 2f / 3f;
-
-	Array<CardGUI> cards = new Array<CardGUI>();
+    Draggable.justPickedUpEventHandler onPickUp = null;
+    Draggable.justPutDownEventHandler onPutDown = null;
+    public Array<CardGUI> cards = new Array<CardGUI>();
 
 	public CardGUI currentHeld;
 
@@ -41,9 +44,12 @@ public partial class Hand : Control
 	}
 	public void addToHand(CardGUI cardGUI)
 	{
+		cardGUI.justPlayed = false;
 		AddChild(cardGUI);
 		cards.Add(cardGUI);
-		cardGUI.draggable.justPickedUp += () =>
+		cardGUI.draggable.canUse = true;
+		cardGUI.draggable.snapBack = false;
+		onPickUp = () =>
 		{
 			currentHeld = cardGUI;
 			cardGUI.makeTransparent();
@@ -51,21 +57,27 @@ public partial class Hand : Control
 			positionCards();
 			EmitSignalCardPickedUp(cardGUI);
 		};
-		cardGUI.draggable.justPutDown += () =>
+		onPutDown = () =>
 		{
 			currentHeld = null;
 			cardGUI.restoreTransparency();
-			cards.Add(cardGUI);
-			positionCards();
 			EmitSignalCardPutDown(cardGUI);
-		};
+            if (IsInstanceValid(cardGUI) && cardGUI.GetParent() == this)
+            {
+                cards.Add(cardGUI);
+                positionCards();
+            }
+        };
+        cardGUI.draggable.justPickedUp += onPickUp;
+		cardGUI.draggable.justPutDown += onPutDown;
+		
 		CallDeferred(nameof(positionCards));
 	}
 	public void removeFromHand(CardGUI card)
 	{
 		cards.Remove(card);
-		card.draggable.justPickedUp -= positionCards;
-		card.draggable.justPutDown -= positionCards;
+		card.draggable.justPickedUp -= onPickUp;
+		card.draggable.justPutDown -= onPutDown;
 		RemoveChild(card);
 		CallDeferred(nameof(positionCards));
 	}
@@ -88,6 +100,7 @@ public partial class Hand : Control
 		for (int i = 0; i < cardCount; i++)
 		{
 			CardGUI card = cards[i];
+			if (card.justPlayed) continue;
 			card.CustomMinimumSize = Vector2.Zero;
 			card.CustomMaximumSize = new Vector2(cardWidth, cardHeight);
 			card.Size = new Vector2(cardWidth, cardHeight);

@@ -3,6 +3,8 @@ using System;
 
 public partial class Battle : Node3D
 {
+	//TODO add turns
+	[Export] Control drawPile, discardPile;
 	public BattleGrid battleGrid;
 	CardActionHandler cardActionHandler = new CardActionHandler();
 	public Deck deck = new Deck();
@@ -30,6 +32,8 @@ public partial class Battle : Node3D
 		gridSpace.AddChild(battleGrid);
 		AddChild(cardActionHandler);
 		cardQueue = GetNode<CardQueue>("%CardQueue");
+		cardQueue.discardGlobalPosition = discardPile.GlobalPosition;
+		cardQueue.drawGlobalPosition = discardPile.GlobalPosition;
 	}
 
 	void setupHand()
@@ -37,6 +41,7 @@ public partial class Battle : Node3D
 		hand.CardPickedUp += (cardGUI) => battleGrid.changeHoverArea(cardGUI.card.area);
 		hand.CardPutDown += (cardGUI) => battleGrid.resetHoverArea();
 
+		//TODO add draw pile first
 		foreach (Card card in Run.deck.baseCards)
 		{
 			hand.addToHand(CardGUI.GetCardGUI(card));
