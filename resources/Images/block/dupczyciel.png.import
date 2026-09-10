@@ -3,7 +3,7 @@
 importer="texture"
 type="CompressedTexture2D"
 uid="uid://cc3khlkyox58q"
-path.s3tc="res://.godot/imported/dupczyciel.png-2f0df937a170fb64124e1be023751f30.s3tc.ctex"
+path.s3tc="res://.godot/imported/dupczyciel.png-195b8445d93c4f3a3959afda8e46dd2c.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://resources/Images/block/dupczyciel.png"
-dest_files=["res://.godot/imported/dupczyciel.png-2f0df937a170fb64124e1be023751f30.s3tc.ctex"]
+source_file="res://resources/images/block/dupczyciel.png"
+dest_files=["res://.godot/imported/dupczyciel.png-195b8445d93c4f3a3959afda8e46dd2c.s3tc.ctex"]
 
 [params]
 

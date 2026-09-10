@@ -15,10 +15,6 @@ run/main_scene="uid://v72sc036151r"
 config/features=PackedStringArray("4.7", "C#", "Forward Plus")
 run/max_fps=144
 
-[autoload]
-
-RichLogger="*uid://ub1m1ursnfro"
-
 [debug]
 
 settings/stdout/print_fps=true
@@ -36,7 +32,7 @@ project/assembly_name="Miau2"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/RichLogger/plugin.cfg", "res://addons/project-time-tracker/plugin.cfg", "res://addons/sketchfab/plugin.cfg")
+enabled=PackedStringArray("res://addons/project-time-tracker/plugin.cfg", "res://addons/sketchfab/plugin.cfg")
 
 [input]
 

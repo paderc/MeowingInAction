@@ -34,16 +34,12 @@ public partial class BattleGrid : Node3D
 		gridSize = new Vector2I(sGrid.sizeX, sGrid.sizeY);
 		serializableBlocks = sGrid.grid;
 	}
-	public void addEntity(Entity entity)
-	{
-		
-	}
 	public override void _Ready()
 	{
 		initializeGrid();
 		this.Name = "BattleGrid";
 		gridContainer.Name = "GridContainer";
-	}
+    }
 	public void initializeGrid()
 	{
 		setupGridContainer();
@@ -54,12 +50,12 @@ public partial class BattleGrid : Node3D
 
 	void setupGridContainer()
 	{
-		gridContainer.Position = new Vector3(
-			-(gridSize.X * blockSize) / 2,
+        gridContainer.Position = new Vector3(
+			-((gridSize.X - 1) * blockSize) / 2,
 			0,
-			-(gridSize.Y * blockSize) / 2
+			-((gridSize.Y - 1) * blockSize) / 2
 			);
-		AddChild(gridContainer);
+        AddChild(gridContainer);
 	}
 
 	void setupBlocks()

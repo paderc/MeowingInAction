@@ -116,4 +116,5 @@ anchor_right = 0.6
 anchor_bottom = 0.7
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 script = ExtResource("4_nckk0")

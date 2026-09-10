@@ -45,7 +45,7 @@ public partial class CardQueue : Control
 	public async Task removeCard(CardGUI cardGUI)
 	{
 		cards.Remove(cardGUI);
-		await cardGUI.moveToGlobal(discardGlobalPosition);
+		await cardGUI.moveToGlobal(discardGlobalPosition, true, true);
 		//TODO add discard pile functionality
 		RemoveChild(cardGUI);
 		positionCards();

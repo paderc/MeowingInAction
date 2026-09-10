@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 public partial class CardGUI : Control
 {
 	static string cardGUIPath = "res://scenes/CardGUI.tscn";
-
+	[Export] AnimationPlayer animationPlayer;
 	public bool justPlayed = false;
 	public Draggable draggable;
 	public Card card;
@@ -28,27 +28,49 @@ public partial class CardGUI : Control
 		nameLabel.Text = card.name;
 		descLabel.Text = card.description;
 	}
-	public async Task moveToGlobal(Vector2 globalTarget, bool useFx = false)
+	public async Task moveToGlobal(Vector2 globalTarget, bool bezier = false, bool useFx = false)
 	{
-		const float DURATION = 0.5f;
+		if (useFx)
+		{
+			animationPlayer.Play("Move");
+			await ToSignal(animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+		}
+		float DURATION = useFx ? ((float)animationPlayer.GetAnimation("Disappear").Length) : 0.5f;
         if (currentTween != null && currentTween.IsRunning())
             currentTween.Kill();
-
-        currentTween = CreateTween();
-        currentTween.TweenProperty(this, "global_position", globalTarget, DURATION)
-                    .SetEase(Tween.EaseType.Out);
+        if (useFx) animationPlayer.Play("Disappear");
+		if (bezier)
+		{
+			currentTween = BezierTween.PositionQuadratic(this, this.GlobalPosition, globalTarget, 330, DURATION, true);
+        }
+		else
+		{
+			currentTween = CreateTween();
+			currentTween.TweenProperty(this, "global_position", globalTarget, DURATION);
+        }
         await ToSignal(currentTween, Tween.SignalName.Finished);
         currentTween = null;
     }
-    public async Task moveToLocal(Vector2 localTarget, bool useFx = false)
+    public async Task moveToLocal(Vector2 localTarget, bool bezier = false, bool useFx = false)
     {
-        const float DURATION = 0.5f;
+        if (useFx)
+        {
+            animationPlayer.Play("Move");
+            await ToSignal(animationPlayer, AnimationPlayer.SignalName.AnimationFinished);
+        }
+        float DURATION = useFx ? ((float)animationPlayer.GetAnimation("Disappear").Length) : 0.5f;
         if (currentTween != null && currentTween.IsRunning())
             currentTween.Kill();
-
-        currentTween = CreateTween();
-        currentTween.TweenProperty(this, "position", localTarget, DURATION)
-                    .SetEase(Tween.EaseType.Out);
+        if (useFx) animationPlayer.Play("Disappear");
+        if (bezier)
+        {
+            currentTween = BezierTween.PositionQuadratic(this, this.Position, localTarget, 330, DURATION, true);
+        }
+        else
+        {
+            currentTween = CreateTween();
+            currentTween.TweenProperty(this, "position", localTarget, DURATION);
+        }
         await ToSignal(currentTween, Tween.SignalName.Finished);
         currentTween = null;
     }

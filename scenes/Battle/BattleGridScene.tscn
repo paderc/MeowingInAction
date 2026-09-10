@@ -7,6 +7,7 @@
 [node name="GridSpace" type="Node3D" parent="." unique_id=1410942780]
 
 [node name="OrbitCameraRig" type="Node3D" parent="." unique_id=850720233]
+unique_name_in_owner = true
 script = ExtResource("1_c10r7")
 minZoom = 5.0
 maxZoom = 15.0
