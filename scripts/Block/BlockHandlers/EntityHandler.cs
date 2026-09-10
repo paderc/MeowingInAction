@@ -16,7 +16,7 @@ public partial class EntityHandler
 		this.block = block;
 		deadEventHandler = (entity) =>
 		{
-			Logger.Error("Unhandled death");
+			GD.PushError("Unhandled death");
 		};
 	}
 	public void addEntity(Entity entity)

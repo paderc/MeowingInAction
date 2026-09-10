@@ -12,9 +12,9 @@ public partial class Hand : Control
 	const float MAX_ROTATION = 0.1f;
 	const float CARD_SPACING = -20;
 	const float CARD_ASPECT_RATIO = 2f / 3f;
-    Draggable.justPickedUpEventHandler onPickUp = null;
-    Draggable.justPutDownEventHandler onPutDown = null;
-    public Array<CardGUI> cards = new Array<CardGUI>();
+	Draggable.justPickedUpEventHandler onPickUp = null;
+	Draggable.justPutDownEventHandler onPutDown = null;
+	public Array<CardGUI> cards = new Array<CardGUI>();
 
 	public CardGUI currentHeld;
 
@@ -48,7 +48,6 @@ public partial class Hand : Control
 		AddChild(cardGUI);
 		cards.Add(cardGUI);
 		cardGUI.draggable.canUse = true;
-		cardGUI.draggable.snapBack = false;
 		onPickUp = () =>
 		{
 			currentHeld = cardGUI;
@@ -62,13 +61,13 @@ public partial class Hand : Control
 			currentHeld = null;
 			cardGUI.restoreTransparency();
 			EmitSignalCardPutDown(cardGUI);
-            if (IsInstanceValid(cardGUI) && cardGUI.GetParent() == this)
-            {
-                cards.Add(cardGUI);
-                positionCards();
-            }
-        };
-        cardGUI.draggable.justPickedUp += onPickUp;
+			if (IsInstanceValid(cardGUI) && cardGUI.GetParent() == this)
+			{
+				cards.Add(cardGUI);
+				positionCards();
+			}
+		};
+		cardGUI.draggable.justPickedUp += onPickUp;
 		cardGUI.draggable.justPutDown += onPutDown;
 		
 		CallDeferred(nameof(positionCards));

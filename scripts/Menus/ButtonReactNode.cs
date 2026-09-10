@@ -24,8 +24,7 @@ public partial class ButtonReactNode : Node
 	{
 		if (buttonContainer == null)
 		{
-			Logger.IncludeStackTraces = true;
-			Logger.Warning("Button container not assigned");
+			GD.PushError("Button container not assigned");
 			return;
 		}
 		foreach (Node node in buttonContainer.GetChildren())

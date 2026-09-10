@@ -91,18 +91,17 @@ public partial class CardActionHandler : Node
 	{
 		var targetBlocks = new Array<GridBlock>(hoveredBlocks);
 		cardGUI.card.unpreview(this);
-        cardGUI.justPlayed = true;
-        queueToBePlayed(cardGUI, targetBlocks);
-        heldCard = null;
+		cardGUI.justPlayed = true;
+		queueToBePlayed(cardGUI, targetBlocks);
+		heldCard = null;
 	}
 	void putCardInQueueVisual(CardGUI cardGUI)
 	{
 		cardGUI.draggable.canUse = false;
-		cardGUI.draggable.snapBack = false;
 		var globalPosition = cardGUI.GlobalPosition;
-        battle.hand.removeFromHand(cardGUI);
-        battle.cardQueue.addCard(cardGUI, globalPosition);
-    }
+		battle.hand.removeFromHand(cardGUI);
+		battle.cardQueue.addCard(cardGUI, globalPosition);
+	}
 	void queueToBePlayed(CardGUI cardGUI, Array<GridBlock> blocks)
 	{
 		cardQueue.Enqueue(new System.Tuple<CardGUI, Array<GridBlock>>(cardGUI, blocks));

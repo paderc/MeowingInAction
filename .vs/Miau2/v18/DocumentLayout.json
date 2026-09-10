@@ -3,28 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\classes\\draggable.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\classes\\draggable.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\battle\\battle.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\battle\\battle.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\card\\hand.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\card\\hand.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\card\\cardgui.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\card\\cardgui.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\card\\cardqueue.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\card\\cardqueue.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\card\\cardactionhandler.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\card\\cardactionhandler.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\actions\\cardaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\actions\\cardaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\actions\\blockaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\actions\\blockaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\actions\\damageaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\actions\\damageaction.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\card\\card.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\card\\card.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|c:\\users\\pader\\onedrive\\dokumenty\\meowinginaction\\scripts\\battle\\battlegrid.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{7DD55815-E0EE-4A2A-A110-447A6BAA232A}|Miau2.csproj|solutionrelative:scripts\\battle\\battlegrid.cs||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     }
   ],
   "DocumentGroupContainers": [
@@ -34,7 +34,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 6,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
@@ -42,78 +42,78 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "BlockAction.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\BlockAction.cs",
-              "RelativeDocumentMoniker": "scripts\\Actions\\BlockAction.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\BlockAction.cs",
-              "RelativeToolTip": "scripts\\Actions\\BlockAction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAACAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "Draggable.cs",
+              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\Draggable.cs",
+              "RelativeDocumentMoniker": "scripts\\classes\\Draggable.cs",
+              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\classes\\Draggable.cs",
+              "RelativeToolTip": "scripts\\classes\\Draggable.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAuwDgAAAAEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T16:44:03.079Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "DamageAction.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\DamageAction.cs",
-              "RelativeDocumentMoniker": "scripts\\Actions\\DamageAction.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\DamageAction.cs",
-              "RelativeToolTip": "scripts\\Actions\\DamageAction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABoAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T16:43:44.909Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CardAction.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\CardAction.cs",
-              "RelativeDocumentMoniker": "scripts\\Actions\\CardAction.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Actions\\CardAction.cs",
-              "RelativeToolTip": "scripts\\Actions\\CardAction.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAABJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T16:41:14.813Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "BattleGrid.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Battle\\BattleGrid.cs",
-              "RelativeDocumentMoniker": "scripts\\Battle\\BattleGrid.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Battle\\BattleGrid.cs",
-              "RelativeToolTip": "scripts\\Battle\\BattleGrid.cs",
-              "ViewState": "AgIAABQAAAAAAAAAAAAuwAkAAAA0AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T16:34:35.859Z",
+              "WhenOpened": "2026-09-10T18:52:11.499Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "Card.cs",
-              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\Card.cs",
-              "RelativeDocumentMoniker": "scripts\\Card\\Card.cs",
-              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\Card.cs",
-              "RelativeToolTip": "scripts\\Card\\Card.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAWwB0AAAAbAAAAAAAAAA==",
+              "Title": "CardQueue.cs",
+              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardQueue.cs",
+              "RelativeDocumentMoniker": "scripts\\Card\\CardQueue.cs",
+              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardQueue.cs",
+              "RelativeToolTip": "scripts\\Card\\CardQueue.cs",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAgwDAAAAAnAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-09T16:30:11.505Z",
+              "WhenOpened": "2026-09-10T18:39:30.693Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
+              "Title": "Battle.cs",
+              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Battle\\Battle.cs",
+              "RelativeDocumentMoniker": "scripts\\Battle\\Battle.cs",
+              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Battle\\Battle.cs",
+              "RelativeToolTip": "scripts\\Battle\\Battle.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA9wCsAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T18:00:37.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "CardGUI.cs",
+              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardGUI.cs",
+              "RelativeDocumentMoniker": "scripts\\Card\\CardGUI.cs",
+              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardGUI.cs",
+              "RelativeToolTip": "scripts\\Card\\CardGUI.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAADwvzoAAAAYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T17:45:15.213Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Hand.cs",
+              "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\Hand.cs",
+              "RelativeDocumentMoniker": "scripts\\Card\\Hand.cs",
+              "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\Hand.cs",
+              "RelativeToolTip": "scripts\\Card\\Hand.cs",
+              "ViewState": "AgIAABAAAAAAAAAAAADwv3YAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-10T17:17:01.629Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
               "Title": "CardActionHandler.cs",
               "DocumentMoniker": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardActionHandler.cs",
               "RelativeDocumentMoniker": "scripts\\Card\\CardActionHandler.cs",
               "ToolTip": "C:\\Users\\pader\\OneDrive\\Dokumenty\\MeowingInAction\\scripts\\Card\\CardActionHandler.cs",
               "RelativeToolTip": "scripts\\Card\\CardActionHandler.cs",
-              "ViewState": "AgIAAEkAAAAAAAAAAAAUwGQAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAFcAAAAAAAAAAAAAAIQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-09-09T14:54:18.702Z",
               "EditorCaption": ""

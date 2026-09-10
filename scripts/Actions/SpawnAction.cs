@@ -17,7 +17,7 @@ public partial class SpawnAction : BlockAction
 			{
 				block.entityHandler.addEntity(new Entity(entry.faction, entry.health));
 			}
-			Logger.Info(entry.ToString() + " onto " + block.ToString());
+			GD.Print(entry.ToString() + " onto " + block.ToString());
 			await Task.CompletedTask;
 		}
 	}

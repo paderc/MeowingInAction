@@ -13,7 +13,7 @@ public partial class TextAnim : BaseAnim
 		set
 		{
 			if (value == null) { return; }
-			if (textMesh == null) { Logger.Error("TextMesh is null"); return; }
+			if (textMesh == null) { GD.PushError("TextMesh is null"); return; }
 			if (Int32.TryParse(value, out int number)) { double fontSize = textMesh.FontSize * 0.7 * number; textMesh.FontSize = (int)fontSize; }
 			textMesh.Text = value;
 		}

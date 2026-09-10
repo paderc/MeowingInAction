@@ -37,10 +37,10 @@ public partial class StartMenu : Control
 	}
 	void manageButtons()
 	{
-		if (playButton == null) { Logger.Error("Button not assigned"); return; };
-		if (meowButton == null) { Logger.Error("Button not assigned"); return; }
-		if (settingsButton == null) { Logger.Error("Button not assigned"); return; }
-		if (exitToDesktopButton == null) {Logger.Error("Button not assigned"); return; }
+		if (playButton == null) { GD.PushError("Button not assigned"); return; };
+		if (meowButton == null) { GD.PushError("Button not assigned"); return; }
+		if (settingsButton == null) { GD.PushError("Button not assigned"); return; }
+		if (exitToDesktopButton == null) {GD.PushError("Button not assigned"); return; }
 
 		playButton.Pressed += () => {
 			EmitSignalStart();

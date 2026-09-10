@@ -28,16 +28,16 @@ public partial class InGameMenu : Control
 
 	public override void _Ready()
 	{
-		if (resumeButton == null) Logger.Warning("Button not assigned");
+		if (resumeButton == null) GD.PushError("Button not assigned");
 		else resumeButton.Pressed += () => EmitSignal(SignalName.Resume);
 		
-		if (settingsButton == null) Logger.Warning("Button not assigned");
+		if (settingsButton == null) GD.PushError("Button not assigned");
 		else settingsButton.Pressed += () => EmitSignal(SignalName.SettingsOpened);
 
-		if (exitButton == null) Logger.Warning("Button not assigned");
+		if (exitButton == null) GD.PushError("Button not assigned");
 		else exitButton.Pressed += () => EmitSignal(SignalName.Exited);
 
-		if (exitToDesktopButton == null) Logger.Warning("Button not assigned");
+		if (exitToDesktopButton == null) GD.PushError("Button not assigned");
 		else exitToDesktopButton.Pressed += () => EmitSignal(SignalName.ExitedToDesktop);
 	}
 	public override void _Input(InputEvent @event)

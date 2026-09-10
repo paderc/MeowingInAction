@@ -22,7 +22,7 @@ public partial class DamageAction : BlockAction
 			if (animationType.category == AnimationType.Category.Damage)
 			{
 				block.entityHandler.makeDamagePermanent(entry.amount);
-				Logger.Info(entry.ToString() + " to " + block.ToString());
+				GD.Print(entry.ToString() + " to " + block.ToString());
 			}
 		}
 	}
